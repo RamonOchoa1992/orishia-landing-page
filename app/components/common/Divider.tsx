@@ -13,6 +13,7 @@ const Divider = ({ width, height }: DividerProps) => {
         alt='Separador'
         width={width}
         height={height}
+        priority
       />
     </div>
   );

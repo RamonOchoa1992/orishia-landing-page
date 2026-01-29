@@ -1,0 +1,53 @@
+/* Contenedor solo para centrar la previsualización */
+.preview-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: transparent
+}
+
+/* El contenedor que simula el input */
+.custom-input-group {
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  border-radius: 9999px; /* Forma de cápsula */
+  padding: 6px 6px 6px 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* El input real (invisible, sin bordes) */
+.custom-input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  outline: none;
+  font-size: 16px;
+  color: #4b5563;
+  font-family: sans-serif;
+}
+
+.custom-input::placeholder {
+  color: #9ca3af;
+}
+
+/* El botón redondeado */
+.custom-button {
+  background-color: #1e3a8a; /* Azul oscuro */
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: sans-serif;
+}
+
+.custom-button:hover {
+  background-color: #172554;
+}

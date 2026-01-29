@@ -6,6 +6,9 @@ import Details from './components/DetailsSection/Details';
 import Automatization from './components/AutomatizationSection/Automatization';
 import Plan from './components/PlanSection/Plan';
 import Steps from './components/StepSection/Steps';
+import Ready from './components/ReadySection/Ready';
+import Contact from './components/ContactSection/Contact';
+import Footer from './components/FooterSection/Footer';
 
 export default function Home() {
   return (
@@ -33,6 +36,9 @@ export default function Home() {
         <Automatization />
         <Plan />
         <Steps />
+        <Ready />
+        <Contact />
+        <Footer />
       </div>
     </main>
   );

@@ -10,7 +10,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'OrishIA Web',
+  title: 'Plataforma OrishIA',
   description: 'Plataforma de gestión OrishIA',
 };
 
@@ -21,6 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <head>
+        <link
+          rel='icon'
+          type='image/ico'
+          href='assets/images/favicon.png'
+          //integrity='sha256-WmxSP3c/PxdOExtLPz8FXD8NCj8VKm9NPzk/X2x/GzVwDQo='
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -51,6 +51,7 @@ const App: React.FC = () => {
     <div className='text-slate-900 flex flex-col items-center justify-center overflow-hidden p-6 pt-15'>
       <div
         className='relative h-[450px] md:h-[550px] flex items-center justify-center [perspective:2000px] w-full max-w-6xl'
+        style={{ transformStyle: 'preserve-3d', pointerEvents: 'none'}}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -65,22 +66,30 @@ const App: React.FC = () => {
           const isVisible = Math.abs(displayOffset) <= 2;
           if (!isVisible) return null;
 
+          // CÁLCULO DE PRIORIDAD:
+          // La activa tiene 50, las laterales 40, 30, etc.
+          const zIndexCalculed = 50 - Math.abs(displayOffset) * 10;
+
           return (
             <div
               key={item.id}
               onClick={() => handleDotClick(index)}
-              className={`absolute transition-all duration-700 ease-out cursor-pointer ${
-                isActive ? 'z-30' : 'z-10'
-              } group`}
+              className={`absolute transition-all duration-700 ease-out cursor-pointer group`}
               style={{
+                // 1. Z-index dinámico para que las capas no se solapen
+                zIndex: zIndexCalculed,
+                transformStyle: 'preserve-3d',
                 transform: `
-                  translateX(${displayOffset * 280}px) 
-                  scale(${isActive ? 1 : 0.75}) 
-                  translateZ(${isActive ? 300 : -400}px)
-                  rotateY(${displayOffset * -35}deg)
-                `,
+          translateX(${displayOffset * 280}px) 
+          scale(${isActive ? 1 : 0.75}) 
+          translateZ(${isActive ? 0 : -300}px)
+          rotateY(${displayOffset * -35}deg)
+        `,
                 opacity: isActive ? 1 : 0.4,
                 filter: isActive ? 'none' : 'blur(2px)',
+                // 2. IMPORTANTE: Si no es la activa, bajamos su prioridad de eventos si fuera necesario
+                // aunque con el z-index dinámico debería bastar.
+                pointerEvents: isVisible ? 'auto' : 'none',
               }}
             >
               <div
@@ -108,7 +117,7 @@ const App: React.FC = () => {
                     background: item.popular
                       ? '#FFFFFF'
                       : 'linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%)',
-                    backdropFilter: 'blur(12px)',
+                    //backdropFilter: 'blur(12px)',
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
                     border: '2px solid #FFD5BA',
                   }}
@@ -171,7 +180,10 @@ const App: React.FC = () => {
                       <ListItem contents={item.contents} />
                     </Box>
                     <Box display={'flex'} justifyContent={'flex-end'}>
-                      <Button sx={{fontWeight: 700, fontSize:12}} variant='text'>
+                      <Button
+                        sx={{ fontWeight: 700, fontSize: 12 }}
+                        variant='text'
+                      >
                         Ver más...
                       </Button>
                     </Box>
