@@ -2,8 +2,12 @@
 import { Box, Paper, Typography } from '@mui/material';
 import Divider from '../common/Divider';
 import FadeInSection from '@/app/utils/Fade';
+import { constant } from './step-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Steps = () => {
+  const { language } = useLanguageStore();
+
   return (
     <FadeInSection>
       <Box>
@@ -29,7 +33,7 @@ const Steps = () => {
               color: 'transparent',
             }}
           >
-            De la idea a la acción
+            {language === 'es' ? constant.es.title : constant.en.title}
           </Typography>
           <Typography
             fontWeight={400}
@@ -46,7 +50,7 @@ const Steps = () => {
               color: 'transparent',
             }}
           >
-            en 3 simples pasos
+            {language === 'es' ? constant.es.description : constant.en.description}
           </Typography>
           <Divider width={950} height={2} />
           <Typography
@@ -56,9 +60,9 @@ const Steps = () => {
             width={'70%'}
             textAlign={'center'}
           >
-            Tus clientes quieren respuestas rápidas, claras y al momento.{' '}
+            {language === 'es' ? constant.es.subtitle : constant.en.subtitle}{' '}
             <span style={{ fontWeight: 700 }}>
-              Con OrishIA, eso se convierte en tu valor diferencia.
+              {language === 'es' ? constant.es.subtitleBold : constant.en.subtitleBold}
             </span>
           </Typography>
         </Box>
@@ -91,10 +95,10 @@ const Steps = () => {
             >
               <Box mr={4}>
                 <Typography fontSize={40} fontWeight={700}>
-                  ANÁLISIS Y DIAGNÓSTICO
+                  {language === 'es' ? constant.es.firstTitle : constant.en.firstTitle}
                 </Typography>
                 <Typography fontSize={28} fontWeight={500}>
-                  IDENTIFICAMOS TUS NECESIDADES ESPECÍFICAS
+                  {language === 'es' ? constant.es.firstDescription : constant.en.firstDescription}
                 </Typography>
               </Box>
               <svg
@@ -111,7 +115,7 @@ const Steps = () => {
           </Paper>
           <Box width={'25%'} display={'flex'} justifyContent={'center'}>
             <Typography pt={4} fontSize={48} fontWeight={600}>
-              Paso 1.
+              {language === 'es' ? constant.es.firstStep : constant.en.firstStep}
             </Typography>
           </Box>
         </Box>
@@ -153,7 +157,7 @@ const Steps = () => {
         >
           <Box width={'25%'} display={'flex'} justifyContent={'center'}>
             <Typography pt={4} fontSize={48} fontWeight={600}>
-              Paso 2.
+              {language === 'es' ? constant.es.secondStep : constant.en.secondStep}
             </Typography>
           </Box>
           <Paper
@@ -187,10 +191,10 @@ const Steps = () => {
               </svg>
               <Box ml={4}>
                 <Typography fontSize={40} fontWeight={700}>
-                  CONFIGURACIÓN PERSONALIZADA
+                  {language === 'es' ? constant.es.secondTitle : constant.en.secondTitle}
                 </Typography>
                 <Typography fontSize={28} fontWeight={500}>
-                  DISEÑAMOS UNA SOLUCIÓN HECHA A MEDIDA
+                  {language === 'es' ? constant.es.secondDescription : constant.en.secondDescription}
                 </Typography>
               </Box>
             </Box>
@@ -253,10 +257,10 @@ const Steps = () => {
             >
               <Box mr={4}>
                 <Typography fontSize={40} fontWeight={700}>
-                  OPTIMIZACIÓN CONTINUA
+                  {language === 'es' ? constant.es.thirdTitle : constant.en.thirdTitle}
                 </Typography>
                 <Typography fontSize={28} fontWeight={500}>
-                  MONITORIZAMOS Y MEJORAMOS LOS RESULTADOS CONSTANTEMENTE
+                  {language === 'es' ? constant.es.thirdDescription : constant.en.thirdDescription}
                 </Typography>
               </Box>
               <svg
@@ -273,7 +277,7 @@ const Steps = () => {
           </Paper>
           <Box width={'25%'} display={'flex'} justifyContent={'center'}>
             <Typography pt={6} fontSize={48} fontWeight={600}>
-              Paso 3.
+              {language === 'es' ? constant.es.thirdStep : constant.en.thirdStep}
             </Typography>
           </Box>
         </Box>

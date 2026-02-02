@@ -4,9 +4,12 @@ import Divider from '../common/Divider';
 import Carrusel from '../../components/PlanSection/Carrusel';
 import { useState } from 'react';
 import FadeInSection from '@/app/utils/Fade';
+import { constant } from './plan-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Plan = () => {
   const [isAnnual, setIsAnnual] = useState(false);
+  const { language } = useLanguageStore();
 
   return (
     <FadeInSection>
@@ -33,7 +36,7 @@ const Plan = () => {
               color: 'transparent',
             }}
           >
-            Planes y Precios
+            {language === 'es' ? constant.es.title : constant.en.title}
           </Typography>
           <Divider width={950} height={2} />
           <Typography
@@ -43,12 +46,9 @@ const Plan = () => {
             width={'70%'}
             textAlign={'center'}
           >
-            Elige el plan que mejor se adapte a tus necesidades. Todos los
-            planes incluyen funciones esenciales para empezar, con opciones para
-            escalar a medida que creces.{' '}
+            {language === 'es' ? constant.es.subtitle : constant.en.subtitle}{' '}
             <span style={{ fontWeight: 700 }}>
-              Sin cargos ocultos y con la flexibilidad de cambiar de plan en
-              cualquier momento.
+              {language === 'es' ? constant.es.subtitleBold : constant.en.subtitleBold}
             </span>
           </Typography>
         </Box>
@@ -71,7 +71,7 @@ const Plan = () => {
                 <span
                   className={`text-sm font-bold tracking-wide transition-colors duration-300 ${!isAnnual ? 'text-white' : 'text-orange-400'}`}
                 >
-                  MENSUAL
+                  {language === 'es' ? constant.es.monthly : constant.en.monthly}
                 </span>
               </div>
 
@@ -80,7 +80,7 @@ const Plan = () => {
                 <span
                   className={`text-sm font-bold tracking-wide transition-colors duration-300 ${isAnnual ? 'text-white' : 'text-orange-400'}`}
                 >
-                  ANUAL
+                  {language === 'es' ? constant.es.annual : constant.en.annual}
                 </span>
                 {/* Discount Badge */}
                 <span
@@ -97,7 +97,7 @@ const Plan = () => {
 
             {/* Subtitle / Helper Text */}
             <Typography mt={2} fontSize={14} fontWeight={600}>
-              Selecciona tu plan de preferencia
+              {language === 'es' ? constant.es.selectPlanText : constant.en.selectPlanText}
             </Typography>
           </div>
         </div>

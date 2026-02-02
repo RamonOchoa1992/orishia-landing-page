@@ -1,8 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import './SubmitButton.css';
+import { constant } from './ready-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 const SubmitButton: React.FC = () => {
   const [email, setEmail] = useState<string>('');
+  const { language } = useLanguageStore();
 
   const handleSubscribe = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -19,13 +22,13 @@ const SubmitButton: React.FC = () => {
         <input
           type='email'
           className='custom-input'
-          placeholder='Enter Your Email'
+          placeholder={constant[language].thirdColumnPlaceholder}
           value={email}
           onChange={handleChange}
           required
         />
         <button type='submit' className='custom-button'>
-          Subscribe
+          {constant[language].thirdColumnButton}
         </button>
       </form>
     </div>

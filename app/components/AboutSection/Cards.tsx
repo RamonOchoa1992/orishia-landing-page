@@ -1,30 +1,51 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
+import { constant } from './about-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 /**
  * Componente de tarjetas interactivas.
  * Utiliza SVGs internos para evitar dependencias de librerías externas.
  */
 const InteractiveCards = () => {
+  const { language } = useLanguageStore();
+
   const cards = [
     {
       id: 1,
-      title: 'Plataforma Omnicanal',
-      description: 'Integra todos los canales de atención en un único lugar.',
+      title:
+        language === 'es'
+          ? constant.es.firstCardTitle
+          : constant.en.firstCardTitle,
+      description:
+        language === 'es'
+          ? constant.es.firstCardDescription
+          : constant.en.firstCardDescription,
       // SVG manual para no requerir lucide-react
       icon: '/assets/images/connet-logo.png',
     },
     {
       id: 2,
-      title: 'Gestión y Administración',
-      description: 'Centraliza toda la información de tus interacciones.',
+      title:
+        language === 'es'
+          ? constant.es.secondCardTitle
+          : constant.en.secondCardTitle,
+      description:
+        language === 'es'
+          ? constant.es.secondCardDescription
+          : constant.en.secondCardDescription,
       icon: '/assets/images/core-logo.png',
     },
     {
       id: 3,
-      title: 'IA Multiagente',
-      description: 'Modelo de IA que gestiona la atención de múltiples flujos.',
+      title:
+        language === 'es'
+          ? constant.es.thirdCardTitle
+          : constant.en.thirdCardTitle,
+      description:
+        language === 'es'
+          ? constant.es.thirdCardDescription
+          : constant.en.thirdCardDescription,
       icon: '/assets/images/infinitive-logo.png',
     },
   ];
@@ -44,12 +65,7 @@ const InteractiveCards = () => {
               }}
             >
               {/* Contenedor del Icono con fondo suave */}
-              <Image
-                width={175}
-                height={212}
-                src={card.icon}
-                alt=''
-              />
+              <Image width={175} height={212} src={card.icon} alt='' />
 
               {/* Título */}
               <Typography
@@ -73,7 +89,9 @@ const InteractiveCards = () => {
 
               {/* Decoración inferior que aparece en hover */}
               <div className='mt-8 flex items-center gap-2 text-sm font-bold opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500'>
-                <Typography fontSize={14} fontWeight={600}>LEARN MORE</Typography>
+                <Typography fontSize={14} fontWeight={600}>
+                  {language === 'es' ? 'APRENDA MÁS' : 'LEARN MORE'}
+                </Typography>
                 <svg
                   width='16'
                   height='16'

@@ -1,8 +1,12 @@
 'use client';
+import useLanguageStore from '@/app/store/useLanguageStore';
 import FadeInSection from '@/app/utils/Fade';
 import { Box, Button, Typography } from '@mui/material';
+import { constant } from './details-constant';
 
 const Details = () => {
+  const { language } = useLanguageStore();
+  
   return (
     <FadeInSection>
       <Box
@@ -18,8 +22,13 @@ const Details = () => {
             fontWeight={100}
             textAlign={'center'}
           >
-            Haz del servicio al cliente{' '}
-            <span style={{ fontWeight: 800 }}>tu ventaja competitiva </span>
+            {language === 'es' ? constant.es.title : constant.en.title}{' '}
+            <span style={{ fontWeight: 800 }}>
+              {' '}
+              {language === 'es'
+                ? constant.es.titleBold
+                : constant.en.titleBold}
+            </span>
           </Typography>
         </Box>
         <Box sx={{ width: '45vw' }}>
@@ -28,8 +37,7 @@ const Details = () => {
             mt={5}
             textAlign={'center'}
           >
-            La plataforma omnicanal que conecta, centraliza y potencia cada
-            interacción con nuestra IA multiagente.
+            {language === 'es' ? constant.es.subtitle : constant.en.subtitle}
           </Typography>
         </Box>
         <Box
@@ -49,7 +57,9 @@ const Details = () => {
             }}
             variant='contained'
           >
-            Learn more
+            {language === 'es'
+              ? constant.es.firstButton
+              : constant.en.firstButton}
           </Button>
           <Button
             sx={{
@@ -61,7 +71,7 @@ const Details = () => {
             }}
             variant='outlined'
           >
-            Contact Us
+            {language === 'es' ? constant.es.secondButton : constant.en.secondButton}
           </Button>
         </Box>
       </Box>

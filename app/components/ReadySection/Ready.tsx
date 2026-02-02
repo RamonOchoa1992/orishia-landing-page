@@ -1,9 +1,13 @@
-'use client'
-import { Box, Button, Typography } from "@mui/material"
-import Divider from "../common/Divider";
-import FadeInSection from "@/app/utils/Fade";
+'use client';
+import { Box, Button, Typography } from '@mui/material';
+import Divider from '../common/Divider';
+import FadeInSection from '@/app/utils/Fade';
+import { constant } from './ready-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
-const Ready = () => { 
+const Ready = () => {
+  const { language } = useLanguageStore();
+
   return (
     <FadeInSection>
       <Box mt={25}>
@@ -17,9 +21,18 @@ const Ready = () => {
           rowGap={4}
         >
           <Typography width={'55%'} fontSize={38} fontWeight={500}>
-            ¿Listo para conocer como{' '}
-            <span style={{ fontWeight: 700 }}>OrishIA</span>, puede potenciar tu
-            negocio?
+            {language === 'es'
+              ? constant.es.firstTitle
+              : constant.en.firstTitle}{' '}
+            <span style={{ fontWeight: 700 }}>
+              {language === 'es'
+                ? constant.es.secondTitle
+                : constant.en.secondTitle}
+            </span>
+            ,{' '}
+            {language === 'es'
+              ? constant.es.thirdTitle
+              : constant.en.thirdTitle}
           </Typography>
           <Typography
             textAlign={'center'}
@@ -27,7 +40,7 @@ const Ready = () => {
             fontSize={34}
             fontWeight={500}
           >
-            El primer paso lo das tú. Hablemos hoy mismo.
+            {language === 'es' ? constant.es.subTitle : constant.en.subTitle}
           </Typography>
           <Button
             sx={{
@@ -37,17 +50,17 @@ const Ready = () => {
               fontWeight: 600,
               fontSize: 16,
               mt: -1,
-              mb: 1
+              mb: 1,
             }}
             variant='contained'
           >
-            Learn more
+            {language === 'es' ? constant.es.button : constant.en.button}
           </Button>
         </Box>
         <Divider width={1000} height={2} />
       </Box>
     </FadeInSection>
   );
-}
+};
 
-export default Ready
+export default Ready;

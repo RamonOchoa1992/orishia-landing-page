@@ -1,7 +1,13 @@
+'use client'
+
 import { Box, Typography } from "@mui/material"
 import Divider from "../common/Divider";
+import { constant } from './footer-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Footer = () => { 
+  const { language } = useLanguageStore();
+  
   return (
     <Box mt={12}>
       <Box>
@@ -9,7 +15,7 @@ const Footer = () => {
       </Box>
       <Box display={'flex'} justifyContent={'center'} mt={4}>
         <Typography fontSize={14} fontWeight={400} sx={{ color: '#2B2B2B' }}>
-          © Copyright 2026, All Rights Reserved by name
+          { constant[language].title }
         </Typography>
       </Box>
     </Box>

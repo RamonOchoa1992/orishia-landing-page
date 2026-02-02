@@ -3,10 +3,12 @@ import { Box, Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import ListItem from './ListItem';
 import { itemsList } from '@/app/utils/items-list';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 const App: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(2);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const { language } = useLanguageStore();
 
   // Referencia tipada para el intervalo (number en el navegador)
   const autoPlayRef = useRef<number | null>(null);
@@ -51,7 +53,7 @@ const App: React.FC = () => {
     <div className='text-slate-900 flex flex-col items-center justify-center overflow-hidden p-6 pt-15'>
       <div
         className='relative h-[450px] md:h-[550px] flex items-center justify-center [perspective:2000px] w-full max-w-6xl'
-        style={{ transformStyle: 'preserve-3d', pointerEvents: 'none'}}
+        style={{ transformStyle: 'preserve-3d', pointerEvents: 'none' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -104,7 +106,9 @@ const App: React.FC = () => {
                     textAlign={'center'}
                     color='text.secondary'
                   >
-                    Plan más popular
+                    {language === 'es'
+                      ? 'Plan más popular'
+                      : 'Most popular plan'}
                   </Typography>
                 )}
                 <div
@@ -141,14 +145,16 @@ const App: React.FC = () => {
                         fontWeight={700}
                         sx={{ color: '#1A1A1A' }}
                       >
-                        {item.title}
+                        {language === 'es' ? item.title[0] : item.title[1]}
                       </Typography>
                       <Typography
                         fontSize={15}
                         fontWeight={400}
                         sx={{ color: '#666666' }}
                       >
-                        {item.subtitle}
+                        {language === 'es'
+                          ? item.subtitle[0]
+                          : item.subtitle[1]}
                       </Typography>
                       <div
                         className='w-full flex justify-center mt-1'
@@ -174,7 +180,9 @@ const App: React.FC = () => {
                           fontWeight={700}
                           sx={{ color: '#1A1A1A', marginLeft: '.3rem' }}
                         >
-                          {item.planType}
+                          {language === 'es'
+                            ? item.planType[0]
+                            : item.planType[1]}
                         </Typography>
                       </Box>
                       <ListItem contents={item.contents} />
@@ -184,7 +192,7 @@ const App: React.FC = () => {
                         sx={{ fontWeight: 700, fontSize: 12 }}
                         variant='text'
                       >
-                        Ver más...
+                        {language === 'es' ? 'Ver más...' : 'See more...'}
                       </Button>
                     </Box>
                     <Box mt={0.5}>
@@ -208,7 +216,7 @@ const App: React.FC = () => {
                           },
                         }}
                       >
-                        Select plan
+                        {language === 'es' ? 'Seleccionar plan' : 'Select plan'}
                       </Button>
                     </Box>
                   </div>

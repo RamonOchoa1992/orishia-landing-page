@@ -3,8 +3,12 @@ import { Box, Typography } from '@mui/material';
 import InteractiveCards from './Cards';
 import Divider from '../common/Divider';
 import FadeInSection from '@/app/utils/Fade';
+import useLanguageStore from '@/app/store/useLanguageStore';
+import { constant } from './about-constant';
 
 const About = () => {
+  const { language } = useLanguageStore();
+
   return (
     <FadeInSection>
       <Box
@@ -27,7 +31,7 @@ const About = () => {
             color: 'transparent',
           }}
         >
-          ¿Que es OrishIA?
+          {language === 'es' ? constant.es.title : constant.en.title}
         </Typography>
         <Divider width={950} height={2} />
         <Typography
@@ -37,8 +41,7 @@ const About = () => {
           width={'70%'}
           textAlign={'center'}
         >
-          La plataforma omnicanal que conecta, centraliza y potencia cada
-          interacción con nuestra IA multiagente.
+          {language === 'es' ? constant.es.subtitle : constant.en.subtitle}
         </Typography>
         <InteractiveCards />
       </Box>

@@ -5,9 +5,12 @@ import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import SubmitButton from './SubmitButton';
-import Divider from '../common/Divider';
+import { constant } from './ready-constant';
+import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Contact = () => {
+  const { language } = useLanguageStore();
+
   return (
     <FadeInSection>
       <Box mt={10} display={'flex'} columnGap={12}>
@@ -51,40 +54,19 @@ const Contact = () => {
             letterSpacing={3}
             lineHeight={5}
           >
-            COMPANY
+            {constant[language].firstColumnTitle}
           </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            About
-          </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Features
-          </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Works
-          </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Career
-          </Typography>
+          {constant[language].firstColumnItems.map((item, i) => (
+              <Typography
+                key={i}
+                sx={{ color: '#2B2B2B' }}
+                fontWeight={400}
+                fontSize={14}
+                lineHeight={3}
+              >
+                {item}
+              </Typography>
+            ))}
         </Box>
         <Box>
           <Typography
@@ -94,40 +76,19 @@ const Contact = () => {
             letterSpacing={3}
             lineHeight={5}
           >
-            HELP
+            {constant[language].secondColumnTitle}
           </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Customer Support
-          </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Delivery Details
-          </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Terms & Conditions
-          </Typography>
-          <Typography
-            sx={{ color: '#2B2B2B' }}
-            fontWeight={400}
-            fontSize={14}
-            lineHeight={3}
-          >
-            Privacy Policy
-          </Typography>
+          {constant[language].secondColumnItems.map((item, i) => (
+            <Typography
+              key={i}
+              sx={{ color: '#2B2B2B' }}
+              fontWeight={400}
+              fontSize={14}
+              lineHeight={3}
+            >
+              {item}
+            </Typography>
+          ))}
         </Box>
         <Box>
           <Typography
@@ -137,7 +98,7 @@ const Contact = () => {
             letterSpacing={3}
             lineHeight={5}
           >
-            SUBSCRIBE TO NEWSLETTER
+            {constant[language].thirdColumnTitle}
           </Typography>
           <SubmitButton />
         </Box>
