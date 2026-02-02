@@ -51,7 +51,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className='text-slate-900 flex flex-col items-center justify-center overflow-hidden p-6 pt-15'>
+    <div className='text-slate-900 flex flex-col items-center justify-center overflow-hidden p-6 pt-12 lg:pt-5'>
       <div
         className='relative h-[450px] md:h-[550px] flex items-center justify-center [perspective:2000px] w-full max-w-6xl'
         style={{ transformStyle: 'preserve-3d', pointerEvents: 'none' }}
@@ -96,7 +96,7 @@ const App: React.FC = () => {
               }}
             >
               <div
-                className={`relative w-[300px] h-[400px]  md:w-[356px] md:h-[522px] rounded-[26px] overflow-hidden transition-all duration-200 ease-in-out pt-8 pl-2 ${item.popular ? 'bg-orange-400 shadow-2xl ' : 'bg-transparent'}`}
+                className={`relative w-[356px] h-[522px]  md:w-[356px] md:h-[522px] rounded-[26px] overflow-hidden transition-all duration-200 ease-in-out pt-8 pl-2 ${item.popular ? 'bg-orange-400 shadow-2xl ' : 'bg-transparent'}`}
               >
                 {item.popular && (
                   <Typography
@@ -111,7 +111,7 @@ const App: React.FC = () => {
                   </Typography>
                 )}
                 <div
-                  className={`relative w-[300px] h-[400px] md:w-[340px] md:h-[480px] rounded-[26px] overflow-hidden transition-all duration-200 ease-in-out shadow-2xl ${
+                  className={`relative w-[340px] h-[480px] md:w-[340px] md:h-[480px] rounded-[26px] overflow-hidden transition-all duration-200 ease-in-out shadow-2xl ${
                     isActive
                       ? 'group-hover:scale-[1.02] group-hover:shadow-blue-500/10'
                       : ''
@@ -227,7 +227,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Navegación (Dots) */}
-      <div className='flex gap-3 mt-20 mb-5'>
+      <div className='flex gap-3 mt-10 mb-2'>
         {items.map((_, index) => (
           <button
             key={index}

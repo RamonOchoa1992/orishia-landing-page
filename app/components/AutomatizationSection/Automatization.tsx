@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Box, Typography } from '@mui/material';
 import Divider from '../common/Divider';
 import AutomatizationCard from './Card';
@@ -11,54 +11,73 @@ const Automatization = () => {
 
   return (
     <FadeInSection>
-      <Box>
+      <Box px={{ xs: 2, md: 0 }}>
+        {' '}
+        {/* Padding lateral de seguridad en móvil */}
+        {/* --- HEADER DE LA SECCIÓN --- */}
         <Box
-          mt={4}
+          mt={{ xs: 6, md: 4 }} // Menos margen superior en móvil
           display={'flex'}
           flexDirection={'column'}
           justifyContent={'center'}
           alignItems={'center'}
         >
+          {/* Título Principal */}
           <Typography
             fontWeight={400}
-            fontSize={46}
+            // RESPONSIVE: Texto más pequeño en móvil para evitar cortes
+            fontSize={{ xs: 32, sm: 40, md: 46 }}
             textAlign={'center'}
             sx={{
-              // El degradado debe ir en el background
               backgroundImage:
                 'linear-gradient(90deg, #2A458A 0%, #EE6A2D 100%)',
-              // Estas propiedades hacen que el fondo solo se vea donde hay texto
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               color: 'transparent',
+              lineHeight: { xs: 1.2, md: 1.5 },
             }}
           >
             {constant[language].title}
           </Typography>
+
+          {/* Título Bold */}
           <Typography
             fontWeight={700}
-            fontSize={46}
+            fontSize={{ xs: 32, sm: 40, md: 46 }}
             textAlign={'center'}
             sx={{
-              // El degradado debe ir en el background
               backgroundImage:
                 'linear-gradient(90deg, #2A458A 0%, #EE6A2D 100%)',
-              // Estas propiedades hacen que el fondo solo se vea donde hay texto
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               color: 'transparent',
+              lineHeight: { xs: 1.2, md: 1.5 },
             }}
           >
             {constant[language].titleBold}
           </Typography>
-          <Divider width={950} height={2} />
+
+          {/* DIVIDER RESPONSIVE: Controlamos el ancho desde el contenedor */}
+          <Box
+            sx={{
+              width: { xs: '90%', md: 'auto' },
+              my: 2,
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            {/* Asumiendo que tu Divider acepta width pero tiene max-width: 100% internamente */}
+            <Divider width={950} height={2} />
+          </Box>
+
+          {/* Subtítulo */}
           <Typography
             mt={2}
             fontWeight={400}
-            fontSize={26}
-            width={'70%'}
+            fontSize={{ xs: 18, md: 26 }} // Fuente legible en móvil
+            width={{ xs: '100%', md: '70%' }} // Ancho completo en móvil
             textAlign={'center'}
           >
             {constant[language].subtitle}{' '}
@@ -67,56 +86,69 @@ const Automatization = () => {
             </span>
           </Typography>
         </Box>
+        {/* --- GRID DE TARJETAS --- */}
         <Box
-          mt={6}
+          mt={{ xs: 4, md: 10 }} // Más espacio en desktop
           display='grid'
-          // Definimos 1 columna para móvil (base) y 2 para tablets/desktop (md)
-          // Si usas Chakra UI: gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}
-          // Si usas MUI: sx={{ gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' } }}
-          gridTemplateColumns={{
-            base: '1fr',
-            lg: 'repeat(2, 1fr)',
+          // RESPONSIVE GRID:
+          // xs: 1 columna
+          // md: 2 columnas
+          sx={{
+            gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
+            gap: { xs: 4, md: 8 }, // Espacio entre tarjetas variable
+            maxWidth: '1200px',
+            mx: 'auto',
           }}
-          gap={8} // Espaciado entre tarjetas
-          justifyItems='center' // Centra el contenido horizontalmente en cada celda
-          alignItems='center' // Centra el contenido verticalmente
-          maxWidth='1200px' // Opcional: limita el ancho máximo para que no se estire demasiado en pantallas enormes
-          mx='auto' // Centra el contenedor completo en la pantalla
+          justifyItems='center'
+          alignItems='center'
         >
+          {/* CARD 1 */}
           <Box
             width='100%'
             display='flex'
             justifyContent='center'
-            sx={{ mt: { lg: -10 } }}
+            // Solo aplicamos el margen negativo en pantallas grandes (lg)
+            sx={{ mt: { xs: 0, lg: -10 } }}
           >
             <AutomatizationCard
               title={constant[language].firstCardTitle}
               subtitle={constant[language].firstCardDescription}
             />
           </Box>
+
+          {/* CARD 2 */}
           <Box
             width='100%'
             display='flex'
             justifyContent='center'
-            sx={{ mt: { lg: 6 } }}
+            sx={{ mt: { xs: 0, lg: 6 } }}
           >
             <AutomatizationCard
               title={constant[language].secondCardTitle}
               subtitle={constant[language].secondCardDescription}
             />
           </Box>
+
+          {/* CARD 3 */}
           <Box
             width='100%'
             display='flex'
             justifyContent='center'
-            sx={{ mt: { lg: -16 } }}
+            sx={{ mt: { xs: 0, lg: -16 } }}
           >
             <AutomatizationCard
               title={constant[language].thirdCardTitle}
               subtitle={constant[language].thirdCardDescription}
             />
           </Box>
-          <Box width='100%' display='flex' justifyContent='center'>
+
+          {/* CARD 4 */}
+          <Box
+            width='100%'
+            display='flex'
+            justifyContent='center'
+            // Sin margen especial, sigue el flujo natural
+          >
             <AutomatizationCard
               title={constant[language].fourthCardTitle}
               subtitle={constant[language].fourthCardDescription}

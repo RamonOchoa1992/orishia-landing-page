@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 type DividerProps = {
-  width: number,
-  height: number
-}
+  width: number;
+  height: number;
+};
 
 const Divider = ({ width, height }: DividerProps) => {
   return (
@@ -14,6 +14,9 @@ const Divider = ({ width, height }: DividerProps) => {
         width={width}
         height={height}
         priority
+        // ESTA ES LA MAGIA DEL RESPONSIVE:
+        // Permite que la imagen se reduzca en pantallas pequeñas
+        style={{ maxWidth: '100%', height: 'auto' }}
       />
     </div>
   );

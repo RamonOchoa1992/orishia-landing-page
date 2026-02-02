@@ -6,21 +6,26 @@ import { constant } from './details-constant';
 
 const Details = () => {
   const { language } = useLanguageStore();
-  
+
   return (
     <FadeInSection>
       <Box
-        width={'inherit'}
-        padding={'1.5rem 7rem 0 7rem'}
+        width={'100%'} // Asegura que use el ancho disponible
+        // 1. RESPONSIVE: Padding pequeño en móvil, grande en escritorio
+        sx={{
+          padding: { xs: '1.5rem', md: '1.5rem 7rem 0 7rem' },
+        }}
         display={'flex'}
         flexDirection={'column'}
         alignItems={'center'}
       >
-        <Box mt={2}>
+        <Box mt={2} sx={{ maxWidth: '100%' }}>
           <Typography
             sx={{ fontSize: { xs: '40px', sm: '40px', md: '80px' } }}
             fontWeight={100}
             textAlign={'center'}
+            // Evita que el texto se salga en pantallas muy pequeñas
+            style={{ wordBreak: 'break-word' }}
           >
             {constant[language].title}{' '}
             <span style={{ fontWeight: 800 }}>
@@ -29,7 +34,9 @@ const Details = () => {
             </span>
           </Typography>
         </Box>
-        <Box sx={{ width: '45vw' }}>
+
+        {/* 2. RESPONSIVE: Ancho del subtítulo */}
+        <Box sx={{ width: { xs: '90%', md: '45vw' } }}>
           <Typography
             sx={{ fontSize: { xs: '20px', sm: '20px', md: '30px' } }}
             mt={5}
@@ -38,29 +45,37 @@ const Details = () => {
             {constant[language].subtitle}
           </Typography>
         </Box>
+
         <Box
           mt={6}
           display={'flex'}
-          sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
+          // Usamos gap para separar botones en lugar de márgenes manuales
+          gap={2}
+          sx={{
+            flexDirection: { xs: 'column', sm: 'row' },
+            width: { xs: '100%', sm: 'auto' }, // En móvil ocupa todo el ancho
+          }}
         >
           <Button
             sx={{
               borderRadius: 18,
-              width: 159,
+              // 3. RESPONSIVE: 100% ancho en móvil, 159px fijo en escritorio
+              width: { xs: '100%', sm: 159 },
               height: 60,
               fontWeight: 600,
               fontSize: 16,
-              mr: { xs: 0, sm: '1rem' },
-              mb: { xs: '1rem', sm: 0 },
+              // Eliminé los margenes manuales (mr, mb) porque usamos 'gap' arriba
             }}
             variant='contained'
           >
             {constant[language].firstButton}
           </Button>
+
           <Button
             sx={{
               borderRadius: 18,
-              width: 159,
+              // 3. RESPONSIVE: Igual aquí, adaptable
+              width: { xs: '100%', sm: 159 },
               height: 60,
               fontWeight: 600,
               fontSize: 16,

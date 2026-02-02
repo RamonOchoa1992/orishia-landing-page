@@ -21,7 +21,7 @@ const SubmitButton: React.FC = () => {
       <form className='custom-input-group' onSubmit={handleSubscribe}>
         <input
           type='email'
-          className='custom-input'
+          className='custom-input w-full'
           placeholder={constant[language].thirdColumnPlaceholder}
           value={email}
           onChange={handleChange}
