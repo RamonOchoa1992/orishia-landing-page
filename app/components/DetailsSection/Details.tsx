@@ -22,12 +22,10 @@ const Details = () => {
             fontWeight={100}
             textAlign={'center'}
           >
-            {language === 'es' ? constant.es.title : constant.en.title}{' '}
+            {constant[language].title}{' '}
             <span style={{ fontWeight: 800 }}>
               {' '}
-              {language === 'es'
-                ? constant.es.titleBold
-                : constant.en.titleBold}
+              {constant[language].titleBold}
             </span>
           </Typography>
         </Box>
@@ -37,7 +35,7 @@ const Details = () => {
             mt={5}
             textAlign={'center'}
           >
-            {language === 'es' ? constant.es.subtitle : constant.en.subtitle}
+            {constant[language].subtitle}
           </Typography>
         </Box>
         <Box
@@ -57,9 +55,7 @@ const Details = () => {
             }}
             variant='contained'
           >
-            {language === 'es'
-              ? constant.es.firstButton
-              : constant.en.firstButton}
+            {constant[language].firstButton}
           </Button>
           <Button
             sx={{
@@ -71,7 +67,7 @@ const Details = () => {
             }}
             variant='outlined'
           >
-            {language === 'es' ? constant.es.secondButton : constant.en.secondButton}
+            {constant[language].secondButton}
           </Button>
         </Box>
       </Box>

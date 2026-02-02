@@ -38,25 +38,25 @@ const Header = () => {
             sx={{ fontSize: '16px', fontWeight: '600', mx: '0.75rem' }}
             variant='text'
           >
-            {language === 'es' ? constant.es.firstNav : constant.en.firstNav}
+            {constant[language].firstNav}
           </Button>
           <Button
             sx={{ fontSize: '16px', fontWeight: '600', mx: '0.75rem' }}
             variant='text'
           >
-            {language === 'es' ? constant.es.secondNav : constant.en.secondNav}
+            {constant[language].secondNav}
           </Button>
           <Button
             sx={{ fontSize: '16px', fontWeight: '600', mx: '0.75rem' }}
             variant='text'
           >
-            {language === 'es' ? constant.es.thirdNav : constant.en.thirdNav}
+            {constant[language].thirdNav}
           </Button>
           <Button
             sx={{ fontSize: '16px', fontWeight: '600', ml: '0.75rem' }}
             variant='text'
           >
-            {language === 'es' ? constant.es.fourthNav : constant.en.fourthNav}
+            {constant[language].fourthNav}
           </Button>
         </Box>
 

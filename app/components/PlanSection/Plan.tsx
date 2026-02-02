@@ -36,7 +36,7 @@ const Plan = () => {
               color: 'transparent',
             }}
           >
-            {language === 'es' ? constant.es.title : constant.en.title}
+            {constant[language].title}
           </Typography>
           <Divider width={950} height={2} />
           <Typography
@@ -46,9 +46,9 @@ const Plan = () => {
             width={'70%'}
             textAlign={'center'}
           >
-            {language === 'es' ? constant.es.subtitle : constant.en.subtitle}{' '}
+            {constant[language].subtitle}{' '}
             <span style={{ fontWeight: 700 }}>
-              {language === 'es' ? constant.es.subtitleBold : constant.en.subtitleBold}
+              {constant[language].subtitleBold}
             </span>
           </Typography>
         </Box>
@@ -71,7 +71,7 @@ const Plan = () => {
                 <span
                   className={`text-sm font-bold tracking-wide transition-colors duration-300 ${!isAnnual ? 'text-white' : 'text-orange-400'}`}
                 >
-                  {language === 'es' ? constant.es.monthly : constant.en.monthly}
+                  {constant[language].monthly}
                 </span>
               </div>
 
@@ -80,7 +80,7 @@ const Plan = () => {
                 <span
                   className={`text-sm font-bold tracking-wide transition-colors duration-300 ${isAnnual ? 'text-white' : 'text-orange-400'}`}
                 >
-                  {language === 'es' ? constant.es.annual : constant.en.annual}
+                  {constant[language].annual}
                 </span>
                 {/* Discount Badge */}
                 <span
@@ -97,7 +97,7 @@ const Plan = () => {
 
             {/* Subtitle / Helper Text */}
             <Typography mt={2} fontSize={14} fontWeight={600}>
-              {language === 'es' ? constant.es.selectPlanText : constant.en.selectPlanText}
+              {constant[language].selectPlanText}
             </Typography>
           </div>
         </div>

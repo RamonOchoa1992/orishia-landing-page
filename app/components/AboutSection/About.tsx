@@ -31,7 +31,7 @@ const About = () => {
             color: 'transparent',
           }}
         >
-          {language === 'es' ? constant.es.title : constant.en.title}
+          {constant[language].title}
         </Typography>
         <Divider width={950} height={2} />
         <Typography
@@ -41,7 +41,7 @@ const About = () => {
           width={'70%'}
           textAlign={'center'}
         >
-          {language === 'es' ? constant.es.subtitle : constant.en.subtitle}
+          {constant[language].subtitle}
         </Typography>
         <InteractiveCards />
       </Box>

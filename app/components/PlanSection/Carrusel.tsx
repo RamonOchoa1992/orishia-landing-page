@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ListItem from './ListItem';
 import { itemsList } from '@/app/utils/items-list';
 import useLanguageStore from '@/app/store/useLanguageStore';
+import { constant } from './plan-constant';
 
 const App: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(2);
@@ -106,9 +107,7 @@ const App: React.FC = () => {
                     textAlign={'center'}
                     color='text.secondary'
                   >
-                    {language === 'es'
-                      ? 'Plan más popular'
-                      : 'Most popular plan'}
+                    {constant[language].popularPlanText}
                   </Typography>
                 )}
                 <div
@@ -192,7 +191,7 @@ const App: React.FC = () => {
                         sx={{ fontWeight: 700, fontSize: 12 }}
                         variant='text'
                       >
-                        {language === 'es' ? 'Ver más...' : 'See more...'}
+                        {constant[language].seeMoreText}
                       </Button>
                     </Box>
                     <Box mt={0.5}>
@@ -216,7 +215,7 @@ const App: React.FC = () => {
                           },
                         }}
                       >
-                        {language === 'es' ? 'Seleccionar plan' : 'Select plan'}
+                        {constant[language].selectPlanButton}
                       </Button>
                     </Box>
                   </div>

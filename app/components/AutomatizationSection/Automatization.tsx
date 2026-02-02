@@ -34,7 +34,7 @@ const Automatization = () => {
               color: 'transparent',
             }}
           >
-            {language === 'es' ? constant.es.title : constant.en.title}
+            {constant[language].title}
           </Typography>
           <Typography
             fontWeight={700}
@@ -51,7 +51,7 @@ const Automatization = () => {
               color: 'transparent',
             }}
           >
-            {language === 'es' ? constant.es.titleBold : constant.en.titleBold}
+            {constant[language].titleBold}
           </Typography>
           <Divider width={950} height={2} />
           <Typography
@@ -61,9 +61,9 @@ const Automatization = () => {
             width={'70%'}
             textAlign={'center'}
           >
-            {language === 'es' ? constant.es.subtitle : constant.en.subtitle}{' '}
+            {constant[language].subtitle}{' '}
             <span style={{ fontWeight: 700 }}>
-              {language === 'es' ? constant.es.subtitleBold : constant.en.subtitleBold}
+              {constant[language].subtitleBold}
             </span>
           </Typography>
         </Box>
@@ -90,8 +90,8 @@ const Automatization = () => {
             sx={{ mt: { lg: -10 } }}
           >
             <AutomatizationCard
-              title={language === 'es' ? constant.es.firstCardTitle : constant.en.firstCardTitle}
-              subtitle={language === 'es' ? constant.es.firstCardDescription : constant.en.firstCardDescription}
+              title={constant[language].firstCardTitle}
+              subtitle={constant[language].firstCardDescription}
             />
           </Box>
           <Box
@@ -101,8 +101,8 @@ const Automatization = () => {
             sx={{ mt: { lg: 6 } }}
           >
             <AutomatizationCard
-              title={language === 'es' ? constant.es.secondCardTitle : constant.en.secondCardTitle}
-              subtitle={language === 'es' ? constant.es.secondCardDescription : constant.en.secondCardDescription}
+              title={constant[language].secondCardTitle}
+              subtitle={constant[language].secondCardDescription}
             />
           </Box>
           <Box
@@ -112,14 +112,14 @@ const Automatization = () => {
             sx={{ mt: { lg: -16 } }}
           >
             <AutomatizationCard
-              title={language === 'es' ? constant.es.thirdCardTitle : constant.en.thirdCardTitle}
-              subtitle={language === 'es' ? constant.es.thirdCardDescription : constant.en.thirdCardDescription}
+              title={constant[language].thirdCardTitle}
+              subtitle={constant[language].thirdCardDescription}
             />
           </Box>
           <Box width='100%' display='flex' justifyContent='center'>
             <AutomatizationCard
-              title={language === 'es' ? constant.es.fourthCardTitle : constant.en.fourthCardTitle}
-              subtitle={language === 'es' ? constant.es.fourthCardDescription : constant.en.fourthCardDescription}
+              title={constant[language].fourthCardTitle}
+              subtitle={constant[language].fourthCardDescription}
             />
           </Box>
         </Box>

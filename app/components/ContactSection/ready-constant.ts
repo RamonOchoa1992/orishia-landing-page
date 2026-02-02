@@ -10,7 +10,7 @@ export const constant = {
       'Política de Privacidad',
     ],
     thirdColumnTitle: 'SUSCRÍBETE AL BOLETÍN',
-    thirdColumnButton: 'Enviar',
+    thirdColumnButton: 'Subscribirse',
     thirdColumnPlaceholder: 'Ingresa tu correo',
   },
   en: {
@@ -24,7 +24,7 @@ export const constant = {
       'Privacy Policy',
     ],
     thirdColumnTitle: 'SUBSCRIBE TO THE NEWSLETTER',
-    thirdColumnButton: 'Submit',
+    thirdColumnButton: 'Subscribe',
     thirdColumnPlaceholder: 'Enter your email',
   },
 };

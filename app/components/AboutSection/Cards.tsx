@@ -13,39 +13,21 @@ const InteractiveCards = () => {
   const cards = [
     {
       id: 1,
-      title:
-        language === 'es'
-          ? constant.es.firstCardTitle
-          : constant.en.firstCardTitle,
-      description:
-        language === 'es'
-          ? constant.es.firstCardDescription
-          : constant.en.firstCardDescription,
+      title: constant[language].firstCardTitle,
+      description: constant[language].firstCardDescription,
       // SVG manual para no requerir lucide-react
       icon: '/assets/images/connet-logo.png',
     },
     {
       id: 2,
-      title:
-        language === 'es'
-          ? constant.es.secondCardTitle
-          : constant.en.secondCardTitle,
-      description:
-        language === 'es'
-          ? constant.es.secondCardDescription
-          : constant.en.secondCardDescription,
+      title: constant[language].secondCardTitle,
+      description: constant[language].secondCardDescription,
       icon: '/assets/images/core-logo.png',
     },
     {
       id: 3,
-      title:
-        language === 'es'
-          ? constant.es.thirdCardTitle
-          : constant.en.thirdCardTitle,
-      description:
-        language === 'es'
-          ? constant.es.thirdCardDescription
-          : constant.en.thirdCardDescription,
+      title: constant[language].thirdCardTitle,
+      description: constant[language].thirdCardDescription,
       icon: '/assets/images/infinitive-logo.png',
     },
   ];
@@ -90,7 +72,7 @@ const InteractiveCards = () => {
               {/* Decoración inferior que aparece en hover */}
               <div className='mt-8 flex items-center gap-2 text-sm font-bold opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500'>
                 <Typography fontSize={14} fontWeight={600}>
-                  {language === 'es' ? 'APRENDA MÁS' : 'LEARN MORE'}
+                  {constant[language].cardLink}
                 </Typography>
                 <svg
                   width='16'

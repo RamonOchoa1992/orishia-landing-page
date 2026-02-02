@@ -12,6 +12,7 @@ export const constant = {
       'Centraliza toda la información de tus interacciones.',
     thirdCardDescription:
       'Modelo de IA que gestiona la atención de múltiples flujos.',
+    cardLink: 'APRENDER MÁS',
   },
   en: {
     title: 'What is OrishIA?',
@@ -26,5 +27,6 @@ export const constant = {
       'Centralizes all the information from your interactions.',
     thirdCardDescription:
       'AI model that manages support across multiple workflows.',
+    cardLink: 'LEARN MORE',
   },
 };

@@ -8,6 +8,9 @@ export const constant = {
     monthly: 'Mensual',
     annual: 'Anual',
     selectPlanText: 'Selecciona tu plan de preferencia',
+    popularPlanText: 'Plan más popular',
+    seeMoreText: 'Ver más...',
+    selectPlanButton: 'Seleccionar plan',
   },
   en: {
     title: 'Plans & Pricing',
@@ -18,5 +21,8 @@ export const constant = {
     monthly: 'Monthly',
     annual: 'Annual',
     selectPlanText: 'Select your preferred plan',
+    popularPlanText: 'Most popular plan',
+    seeMoreText: 'See more...',
+    selectPlanButton: 'Select plan',
   },
 };

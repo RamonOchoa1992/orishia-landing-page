@@ -21,18 +21,12 @@ const Ready = () => {
           rowGap={4}
         >
           <Typography width={'55%'} fontSize={38} fontWeight={500}>
-            {language === 'es'
-              ? constant.es.firstTitle
-              : constant.en.firstTitle}{' '}
+            {constant[language].firstTitle}{' '}
             <span style={{ fontWeight: 700 }}>
-              {language === 'es'
-                ? constant.es.secondTitle
-                : constant.en.secondTitle}
+              {constant[language].secondTitle}
             </span>
             ,{' '}
-            {language === 'es'
-              ? constant.es.thirdTitle
-              : constant.en.thirdTitle}
+            {constant[language].thirdTitle}
           </Typography>
           <Typography
             textAlign={'center'}
@@ -40,7 +34,7 @@ const Ready = () => {
             fontSize={34}
             fontWeight={500}
           >
-            {language === 'es' ? constant.es.subTitle : constant.en.subTitle}
+            {constant[language].subTitle}
           </Typography>
           <Button
             sx={{
@@ -54,7 +48,7 @@ const Ready = () => {
             }}
             variant='contained'
           >
-            {language === 'es' ? constant.es.button : constant.en.button}
+            {constant[language].button}
           </Button>
         </Box>
         <Divider width={1000} height={2} />

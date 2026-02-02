@@ -4,7 +4,7 @@ export const constant = {
     titleBold: 'tu ventaja competitiva',
     subtitle:
       'La plataforma omnicanal que conecta, centraliza y potencia cada interacción con nuestra IA multiagente.',
-    firstButton: 'Aprenda más',
+    firstButton: 'Aprender más',
     secondButton: 'Contáctenos',
   },
   en: {

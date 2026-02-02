@@ -4,7 +4,7 @@ export const constant = {
     secondTitle: 'OrishIA',
     thirdTitle: 'puede potenciar tu negocio?',
     subTitle: 'El primer paso lo das tú. Hablemos hoy mismo.',
-    button: 'Aprende más',
+    button: 'Aprender más',
   },
   en: {
     firstTitle: 'Ready to discover how',
