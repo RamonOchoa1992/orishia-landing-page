@@ -9,6 +9,7 @@ import Steps from './components/StepSection/Steps';
 import Ready from './components/ReadySection/Ready';
 import Contact from './components/ContactSection/Contact';
 import Footer from './components/FooterSection/Footer';
+import { ScrollToTopButton } from './components/common/ScrollTopButton';
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
         <Ready />
         <Contact />
         <Footer />
+        <ScrollToTopButton />
       </div>
     </main>
   );
