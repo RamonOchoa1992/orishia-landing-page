@@ -1,11 +1,11 @@
 'use client';
 
-import FadeInSection from '@/app/utils/Fade';
+import FadeInSection from '@/app/components/common/FadeInSection';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import SubmitButton from './SubmitButton';
-import { constant } from './ready-constant';
+import { constant } from '@/app/utils/contact-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Contact = () => {

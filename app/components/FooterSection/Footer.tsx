@@ -2,9 +2,9 @@
 
 import { Box, Typography } from '@mui/material';
 import Divider from '../common/Divider';
-import { constant } from './footer-constant';
+import { constant } from '@/app/utils/footer-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
-import FadeInSection from '@/app/utils/Fade';
+import FadeInSection from '@/app/components/common/FadeInSection';
 
 const Footer = () => {
   const { language } = useLanguageStore();

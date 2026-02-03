@@ -1,8 +1,8 @@
 'use client';
 import { Box, Button, Typography } from '@mui/material';
 import Divider from '../common/Divider';
-import FadeInSection from '@/app/utils/Fade';
-import { constant } from './ready-constant';
+import FadeInSection from '@/app/components/common/FadeInSection';
+import { constant } from '@/app/utils/ready-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Ready = () => {
@@ -11,9 +11,6 @@ const Ready = () => {
   return (
     <FadeInSection>
       <Box
-        // 1. MARGEN RESPONSIVE:
-        // En móvil (xs) usamos un margen estándar (e.g., 8).
-        // En escritorio (md) respetamos tu lógica condicional del idioma.
         mt={{ xs: 8, md: language === 'es' ? 12 : 16 }}
         // 2. Padding lateral para que nada toque los bordes en móvil
         px={{ xs: 2, md: 0 }}

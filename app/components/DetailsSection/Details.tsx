@@ -1,8 +1,8 @@
 'use client';
 import useLanguageStore from '@/app/store/useLanguageStore';
-import FadeInSection from '@/app/utils/Fade';
+import FadeInSection from '@/app/components/common/FadeInSection';
 import { Box, Button, Typography } from '@mui/material';
-import { constant } from './details-constant';
+import { constant } from '@/app/utils/details-constant';
 
 const Details = () => {
   const { language } = useLanguageStore();

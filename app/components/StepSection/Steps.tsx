@@ -1,8 +1,8 @@
 'use client';
 import { Box, Paper, Typography } from '@mui/material';
 import Divider from '../common/Divider';
-import FadeInSection from '@/app/utils/Fade';
-import { constant } from './step-constant';
+import FadeInSection from '@/app/components/common/FadeInSection';
+import { constant } from '@/app/utils/step-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Steps = () => {

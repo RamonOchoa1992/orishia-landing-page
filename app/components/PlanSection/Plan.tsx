@@ -3,8 +3,8 @@ import { Box, Typography } from '@mui/material';
 import Divider from '../common/Divider';
 import Carrusel from '../../components/PlanSection/Carrusel';
 import { useState } from 'react';
-import FadeInSection from '@/app/utils/Fade';
-import { constant } from './plan-constant';
+import FadeInSection from '@/app/components/common/FadeInSection';
+import { constant } from '@/app/utils/plan-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Plan = () => {

@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { constant } from './about-constant';
+import { constant } from '@/app/utils/about-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const InteractiveCards = () => {

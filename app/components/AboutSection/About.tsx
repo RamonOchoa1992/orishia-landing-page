@@ -2,9 +2,9 @@
 import { Box, Typography } from '@mui/material';
 import InteractiveCards from './Cards';
 import Divider from '../common/Divider';
-import FadeInSection from '@/app/utils/Fade';
+import FadeInSection from '@/app/components/common/FadeInSection';
 import useLanguageStore from '@/app/store/useLanguageStore';
-import { constant } from './about-constant';
+import { constant } from '@/app/utils/about-constant';
 
 const About = () => {
   const { language } = useLanguageStore();

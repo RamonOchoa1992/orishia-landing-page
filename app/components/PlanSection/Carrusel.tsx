@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import ListItem from './ListItem';
-import { itemsList } from '@/app/utils/items-list';
 import useLanguageStore from '@/app/store/useLanguageStore';
-import { constant } from './plan-constant';
+import { constant } from '@/app/utils/plan-constant';
 
 const App: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(2);
@@ -14,7 +13,7 @@ const App: React.FC = () => {
   // Referencia tipada para el intervalo (number en el navegador)
   const autoPlayRef = useRef<number | null>(null);
 
-  const items = itemsList;
+  const items = constant[language].items;
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % items.length);
@@ -144,16 +143,14 @@ const App: React.FC = () => {
                         fontWeight={700}
                         sx={{ color: '#1A1A1A' }}
                       >
-                        {language === 'es' ? item.title[0] : item.title[1]}
+                        {item.title}
                       </Typography>
                       <Typography
                         fontSize={15}
                         fontWeight={400}
                         sx={{ color: '#666666' }}
                       >
-                        {language === 'es'
-                          ? item.subtitle[0]
-                          : item.subtitle[1]}
+                        {item.subtitle}
                       </Typography>
                       <div
                         className='w-full flex justify-center mt-1'
@@ -179,9 +176,7 @@ const App: React.FC = () => {
                           fontWeight={700}
                           sx={{ color: '#1A1A1A', marginLeft: '.3rem' }}
                         >
-                          {language === 'es'
-                            ? item.planType[0]
-                            : item.planType[1]}
+                          {item.planType}
                         </Typography>
                       </Box>
                       <ListItem contents={item.contents} />

@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image';
 import LanguageToggle from './LanguageToogle';
-import { constant } from './header-constant';
+import { constant } from '@/app/utils/header-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 import { theme } from '@/app/theme/default';
 

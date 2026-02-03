@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import './SubmitButton.css';
-import { constant } from './ready-constant';
+import { constant } from '@/app/utils/contact-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const SubmitButton: React.FC = () => {
