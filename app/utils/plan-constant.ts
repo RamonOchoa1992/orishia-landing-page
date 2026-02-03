@@ -266,7 +266,7 @@ export const constant = {
         popular: false,
         contents: [
           {
-            name: 'Basic IA Faqs',
+            name: 'Basic AI Faqs',
             isActive: true,
             description: '(to 6000 characters y 2 conversational flows).',
           },
@@ -476,7 +476,7 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Extensión IA a Medida: 100 000',
+            name: 'Custom AI Extension: 100 000',
             isActive: false,
             description: '',
           },
