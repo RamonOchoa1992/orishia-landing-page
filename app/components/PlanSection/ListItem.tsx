@@ -24,7 +24,7 @@ const ListItem = ({ contents }: ListItemProps) => {
     >
       {contents.map((el) => (
         <Box key={el.name} display='flex' alignItems='flex-start' mt={1.5}>
-          <Box sx={{ flexShrink: 0, mt: 0.5 }}>
+          <Box sx={{ flexShrink: 0}}>
             <Image
               src={
                 el.isActive
