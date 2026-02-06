@@ -4,27 +4,55 @@ export const constant = {
     firstColumnItems: ['Acerca', 'Características', 'Trabajos', 'Carreras'],
     secondColumnTitle: 'AYUDA',
     secondColumnItems: [
-      'Atención al Cliente',
-      'Detalles de Entrega',
-      'Términos y Condiciones',
-      'Política de Privacidad',
+      {
+        text: 'Planes',
+        href: '#plans',
+      },
+      {
+        text: 'Sobre nosotros',
+        href: '#about',
+      },
+      {
+        text: 'Política de Privacidad',
+        href: '#privacy',
+      },
+      {
+        text: 'Términos y Condiciones',
+        href: '#terms',
+      },
     ],
-    thirdColumnTitle: 'SUSCRÍBETE AL BOLETÍN',
+    thirdColumnTitle: 'Contactos',
     thirdColumnButton: 'Subscribirse',
     thirdColumnPlaceholder: 'Ingresa tu correo',
+    logoText:
+      'La plataforma omnicanal que conecta, centraliza y potencia cada interacción con nuestra IA multiagente.',
   },
   en: {
     firstColumnTitle: 'COMPANY',
     firstColumnItems: ['About', 'Features', 'Works', 'Careers'],
     secondColumnTitle: 'HELP',
     secondColumnItems: [
-      'Customer Service',
-      'Delivery Details',
-      'Terms & Conditions',
-      'Privacy Policy',
+      {
+        text: 'Planes',
+        href: '#plans',
+      },
+      {
+        text: 'Sobre nosotros',
+        href: '#about',
+      },
+      {
+        text: 'Política de Privacidad',
+        href: '#privacy',
+      },
+      {
+        text: 'Términos y Condiciones',
+        href: '#terms',
+      },
     ],
-    thirdColumnTitle: 'SUBSCRIBE TO THE NEWSLETTER',
+    thirdColumnTitle: 'Contacts',
     thirdColumnButton: 'Subscribe',
     thirdColumnPlaceholder: 'Enter your email',
+    logoText:
+      'The omnichannel platform that connects, centralizes, and enhances every interaction with our multi-agent AI.',
   },
 };

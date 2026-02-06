@@ -13,6 +13,6 @@ export const constant = {
     subtitle:
       'The omnichannel platform that connects, centralizes, and powers every interaction with our multi-agent AI.',
     firstButton: 'Learn more',
-    secondButton: 'Contact Us',
+    secondButton: 'Contact us',
   },
 };
