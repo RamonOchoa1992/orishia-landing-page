@@ -52,7 +52,7 @@ const Contact = () => {
           width={{ xs: '100%', lg: '30%' }}
           textAlign={{ xs: 'center', lg: 'left' }}
         >
-          <Box mb={2}>
+          <Box mb={2} display={'flex'} justifyContent={{ xs: 'center', lg: 'flex-start' }}>
             <Image
               src='/assets/images/logo.png'
               alt='Logo'
