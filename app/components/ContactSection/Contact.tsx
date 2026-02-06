@@ -61,7 +61,7 @@ const Contact = () => {
               priority
             />
           </Box>
-          <Typography sx={{ color: '#2B2B2B' }} fontSize={16} fontWeight={400}>
+          <Typography  fontSize={16} fontWeight={400}>
             {constant[language].logoText}
           </Typography>
 
