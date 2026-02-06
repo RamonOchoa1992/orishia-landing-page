@@ -10,7 +10,7 @@ const About = () => {
   const { language } = useLanguageStore();
 
   return (
-    <FadeInSection>
+    <FadeInSection id='about'>
       <Box
         // 1. RESPONSIVE: Menos margen superior en móvil, normal en escritorio
         mt={{ xs: 6, md: 10 }}

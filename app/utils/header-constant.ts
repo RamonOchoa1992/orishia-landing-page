@@ -1,14 +1,12 @@
 export const constant = {
   es: {
-    firstNav: 'Demo',
-    secondNav: 'Acerca',
-    thirdNav: 'Páginas',
-    fourthNav: 'Contacto',
+    firstNav: { text: 'Sobre nosotros', href: '/#about' },
+    secondNav: { text: 'Planes', href: '/#plans' },
+    thirdNav: { text: 'Contactos', href: '/#contacts' },
   },
   en: {
-    firstNav: 'Demo',
-    secondNav: 'About',
-    thirdNav: 'Pages',
-    fourthNav: 'Contact',
+    firstNav: { text: 'About us', href: '/#about' },
+    secondNav: { text: 'Plans', href: '/#plans' },
+    thirdNav: { text: 'Contacts', href: '/#contacts' },
   },
 };

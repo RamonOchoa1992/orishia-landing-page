@@ -5,7 +5,7 @@ export const constant = {
     subtitle:
       'La plataforma omnicanal que conecta, centraliza y potencia cada interacción con nuestra IA multiagente.',
     firstButton: 'Aprender más',
-    secondButton: 'Contáctenos',
+    secondButton: 'Contáctanos',
   },
   en: {
     title: 'Make customer service',

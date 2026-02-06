@@ -12,7 +12,7 @@ const Contact = () => {
   const { language } = useLanguageStore();
 
   return (
-    <FadeInSection>
+    <FadeInSection id='contacts'>
       <Box
         mt={10}
         // CAMBIO PRINCIPAL AQUÍ:

@@ -23,14 +23,13 @@ const Header = () => {
   const { language } = useLanguageStore();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Definimos el color primario aquí para mantener la consistencia (o úsalo desde tu theme)
+  // Definimos el color primario aquí para mantener la consistencia
   const PRIMARY_COLOR = theme.palette.primary.main;
 
   const navItems = [
     constant[language].firstNav,
     constant[language].secondNav,
     constant[language].thirdNav,
-    constant[language].fourthNav,
   ];
 
   const handleDrawerToggle = () => {
@@ -57,16 +56,18 @@ const Header = () => {
 
       <List sx={{ flexGrow: 1 }}>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.text} disablePadding>
             <ListItemButton
               sx={{ textAlign: 'center', py: 2, borderRadius: 2 }}
+              href={item.href}
+              onClick={() => setMobileOpen(false)} // Solo añadimos esto para que el drawer cierre
             >
               <ListItemText
-                primary={item}
+                primary={item.text}
                 primaryTypographyProps={{
                   fontWeight: 600,
                   fontSize: '18px',
-                  color: PRIMARY_COLOR, // Color en el texto del menú móvil
+                  color: PRIMARY_COLOR,
                 }}
               />
             </ListItemButton>
@@ -113,19 +114,20 @@ const Header = () => {
           {navItems.map((item, index) => (
             <Button
               key={index}
+              href={item.href}
               variant='text'
               sx={{
                 fontSize: '16px',
                 fontWeight: '600',
                 mx: '0.75rem',
-                color: PRIMARY_COLOR, // <--- Color aplicado aquí
+                color: PRIMARY_COLOR,
                 '&:hover': {
-                  backgroundColor: `${PRIMARY_COLOR}10`, // Fondo con 10% de opacidad del color primario
+                  backgroundColor: `${PRIMARY_COLOR}10`,
                   color: PRIMARY_COLOR,
                 },
               }}
             >
-              {item}
+              {item.text}
             </Button>
           ))}
         </Box>
@@ -141,7 +143,7 @@ const Header = () => {
           aria-label='open drawer'
           edge='start'
           onClick={handleDrawerToggle}
-          sx={{ color: PRIMARY_COLOR }} // Color del icono hamburguesa
+          sx={{ color: PRIMARY_COLOR }}
         >
           <MenuIcon sx={{ fontSize: 32 }} />
         </IconButton>
@@ -152,6 +154,8 @@ const Header = () => {
         anchor='right'
         open={mobileOpen}
         onClose={handleDrawerToggle}
+        disableRestoreFocus // <-- ESTE ES EL ÚNICO CAMBIO REAL.
+        // Evita que el scroll salte al botón de arriba cuando el drawer cierra.
         ModalProps={{ keepMounted: true }}
         sx={{
           display: { xs: 'block', md: 'none' },

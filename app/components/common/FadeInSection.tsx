@@ -8,6 +8,7 @@ interface FadeInSectionProps {
   direction?: FadeDirection;
   delay?: number; // Opcional: para cascada de animaciones
   threshold?: number; // Opcional: sensibilidad del scroll
+  id?: string
 }
 
 const FadeInSection: React.FC<FadeInSectionProps> = ({
@@ -15,6 +16,7 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({
   direction = 'up',
   delay = 0,
   threshold = 0.1,
+  id
 }) => {
   const [isVisible, setVisible] = useState<boolean>(false);
   // Especificamos que la referencia es a un elemento DIV de HTML
@@ -81,6 +83,7 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({
 
   return (
     <div
+      id={ id}
       ref={domRef}
       style={{ transitionDelay: `${delay}ms` }}
       className={`transition-all duration-1000 ease-out transform ${getDirectionClass()}`}

@@ -89,7 +89,8 @@ const Steps = () => {
           flexDirection={{ xs: 'column-reverse', md: 'row' }}
           justifyContent='space-around'
           alignItems='center'
-          mt={6}
+          mt={8}
+          mb={6}
           px={{ xs: 0, md: 12 }} // Quitamos el padding enorme en móvil
           gap={{ xs: 2, md: 0 }} // Espacio entre elementos en móvil
         >

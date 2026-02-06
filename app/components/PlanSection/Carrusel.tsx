@@ -1,101 +1,111 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+'use client';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useSyncExternalStore,
+} from 'react';
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import ListItem from './ListItem';
 import useLanguageStore from '@/app/store/useLanguageStore';
 import { constant } from '@/app/utils/plan-constant';
 
+// Suscripción segura al ancho de ventana para evitar errores de hidratación y renders en cascada
+function subscribe(callback: () => void) {
+  window.addEventListener('resize', callback);
+  return () => window.removeEventListener('resize', callback);
+}
+
 const App: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(2);
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const { language } = useLanguageStore();
-
-  // Referencia tipada para el intervalo (number en el navegador)
   const autoPlayRef = useRef<number | null>(null);
-
   const items = constant[language].items;
+
+  // Hook moderno para manejar window de forma síncrona y segura en Next.js
+  const windowWidth = useSyncExternalStore(
+    subscribe,
+    () => window.innerWidth,
+    () => 0, // Valor inicial en servidor
+  );
+
+  const isMobile = windowWidth > 0 && windowWidth < 768;
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % items.length);
   }, [items.length]);
 
   useEffect(() => {
-    if (!isPaused) {
-      autoPlayRef.current = window.setInterval(() => {
-        nextSlide();
-      }, 3000);
+    if (!isPaused && windowWidth > 0) {
+      autoPlayRef.current = window.setInterval(nextSlide, 3000);
     }
-
     return () => {
-      if (autoPlayRef.current !== null) {
+      if (autoPlayRef.current !== null)
         window.clearInterval(autoPlayRef.current);
-        autoPlayRef.current = null;
-      }
     };
-  }, [isPaused, nextSlide]);
+  }, [isPaused, nextSlide, windowWidth]);
 
   const handleDotClick = (index: number) => {
     setActiveIndex(index);
     setIsPaused(true);
-
-    if (autoPlayRef.current !== null) {
-      window.clearInterval(autoPlayRef.current);
-      autoPlayRef.current = null;
-    }
-
-    // Reanudar tras 5 segundos de inactividad manual
-    setTimeout(() => {
-      setIsPaused(false);
-    }, 5000);
+    if (autoPlayRef.current !== null) window.clearInterval(autoPlayRef.current);
+    setTimeout(() => setIsPaused(false), 5000);
   };
+
+  if (windowWidth === 0) return <div className='h-[520px]' />;
 
   return (
     <div className='text-slate-900 flex flex-col items-center justify-center overflow-hidden p-6 pt-12 lg:pt-5'>
       <div
-        className='relative h-[450px] md:h-[550px] flex items-center justify-center [perspective:2000px] w-full max-w-6xl'
+        className='relative h-[500px] md:h-[480px] flex items-center justify-center [perspective:2000px] w-full max-w-6xl'
         style={{ transformStyle: 'preserve-3d', pointerEvents: 'none' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {items.map((item, index) => {
           const offset = index - activeIndex;
-          const isActive = offset === 0;
-
           let displayOffset = offset;
           if (offset > 2) displayOffset = offset - items.length;
           if (offset < -2) displayOffset = offset + items.length;
 
-          const isVisible = Math.abs(displayOffset) <= 2;
+          const isActive = displayOffset === 0;
+          const isVisible = Math.abs(displayOffset) <= (isMobile ? 1 : 2);
           if (!isVisible) return null;
 
-          // CÁLCULO DE PRIORIDAD:
-          // La activa tiene 50, las laterales 40, 30, etc.
-          const zIndexCalculed = 50 - Math.abs(displayOffset) * 10;
+          const zIndex = isActive ? 100 : 50 - Math.abs(displayOffset) * 10;
+          const translateX = isMobile
+            ? `${displayOffset * 80}%`
+            : `${displayOffset * 280}px`;
 
           return (
             <div
               key={item.id}
               onClick={() => handleDotClick(index)}
-              className={`absolute transition-all duration-700 ease-out cursor-pointer group`}
+              className='absolute transition-all duration-700 ease-out group'
               style={{
-                // 1. Z-index dinámico para que las capas no se solapen
-                zIndex: zIndexCalculed,
+                zIndex,
                 transformStyle: 'preserve-3d',
+                backfaceVisibility: 'hidden',
                 transform: `
-          translateX(${displayOffset * 280}px) 
-          scale(${isActive ? 1 : 0.75}) 
-          translateZ(${isActive ? 0 : -300}px)
-          rotateY(${displayOffset * -35}deg)
-        `,
-                opacity: isActive ? 1 : 0.4,
-                filter: isActive ? 'none' : 'blur(2px)',
-                // 2. IMPORTANTE: Si no es la activa, bajamos su prioridad de eventos si fuera necesario
-                // aunque con el z-index dinámico debería bastar.
-                pointerEvents: isVisible ? 'auto' : 'none',
+                  translateX(${translateX}) 
+                  scale(${isActive ? 1 : isMobile ? 0.85 : 0.75}) 
+                  translateZ(${isActive ? 150 : -300}px)
+                  rotateY(${displayOffset * (isMobile ? -15 : -35)}deg)
+                `,
+                opacity: isActive ? 1 : isMobile ? 0.6 : 0.85,
+                filter: isActive ? 'none' : 'blur(0.5px)',
+                cursor: isActive ? 'default' : 'pointer',
+                pointerEvents: 'auto',
               }}
             >
+              {/* Contenedor Externo (Marco Naranja si es popular) */}
               <div
-                className={`relative w-[356px] h-[522px]  md:w-[356px] md:h-[522px] rounded-[26px] overflow-hidden transition-all duration-200 ease-in-out pt-8 pl-2 ${item.popular ? 'bg-orange-400 shadow-2xl ' : 'bg-transparent'}`}
+                className={`relative rounded-[26px] transition-all duration-300 ease-in-out pt-8 pl-3 
+                  ${isMobile ? 'w-[320px] h-[480px]' : 'w-[674px] h-[362px]'} 
+                  ${item.popular ? 'bg-orange-400 shadow-2xl ' : 'bg-transparent'}`}
               >
                 {item.popular && (
                   <Typography
@@ -109,109 +119,77 @@ const App: React.FC = () => {
                     {constant[language].popularPlanText}
                   </Typography>
                 )}
+
+                {/* Contenedor Interno (La Tarjeta Blanca) */}
                 <div
-                  className={`relative w-[340px] h-[480px] md:w-[340px] md:h-[480px] rounded-[26px] overflow-hidden transition-all duration-200 ease-in-out shadow-2xl ${
-                    isActive
-                      ? 'group-hover:scale-[1.02] group-hover:shadow-blue-500/10'
-                      : ''
-                  }`}
+                  className={`relative rounded-[26px] overflow-hidden transition-all duration-300 ease-in-out shadow-2xl 
+                    ${isMobile ? 'w-[300px] h-[440px]' : 'w-[650px] md:h-[320px]'}
+                    ${isActive ? 'group-hover:scale-[1.02] group-hover:shadow-blue-500/10' : ''}`}
                   style={{
-                    background: item.popular
-                      ? '#FFFFFF'
-                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%)',
-                    //backdropFilter: 'blur(12px)',
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+                    background: '#FFFFFF', // Aquí se mantiene blanca la tarjeta para legibilidad del texto
                     border: '2px solid #FFD5BA',
+                    backfaceVisibility: 'hidden',
                   }}
                 >
-                  {/* Contenedor de Texto */}
-                  <div
-                    className={`transition-all duration-500 transform ${
-                      isActive
-                        ? 'translate-y-0 opacity-100'
-                        : 'translate-y-0 opacity-100'
-                    } absolute inset-0 p-8 bg-gradient-to-t from-white/60 via-transparent to-transparent`}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                    }}
-                  >
+                  <div className='absolute inset-0 p-6 md:p-8 flex flex-col justify-between'>
                     <Box>
-                      <Typography
-                        fontSize={32}
-                        fontWeight={700}
-                        sx={{ color: '#1A1A1A' }}
+                      <Box
+                        display={'flex'}
+                        flexDirection={isMobile ? 'column' : 'row'}
+                        justifyContent={'space-between'}
                       >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        fontSize={15}
-                        fontWeight={400}
-                        sx={{ color: '#666666' }}
-                      >
-                        {item.subtitle}
-                      </Typography>
-                      <div
-                        className='w-full flex justify-center mt-1'
-                        style={{ marginLeft: '-.1rem' }}
-                      >
+                        <Box>
+                          <Typography
+                            fontSize={isMobile ? 26 : 32}
+                            fontWeight={700}
+                            sx={{ color: '#1A1A1A' }}
+                          >
+                            {item.title}
+                          </Typography>
+                          <Typography
+                            fontSize={15}
+                            fontWeight={400}
+                            sx={{ color: '#666666' }}
+                          >
+                            {item.subtitle}
+                          </Typography>
+                        </Box>
+                        <Box display={'flex'} mt={isMobile ? 1 : 0.5}>
+                          <Typography
+                            fontSize={isMobile ? 26 : 30}
+                            fontWeight={700}
+                            sx={{ color: '#1A1A1A' }}
+                          >
+                            {`$${item.price}`}
+                          </Typography>
+                          <Typography
+                            fontSize={isMobile ? 18 : 22}
+                            fontWeight={700}
+                            sx={{ color: '#1A1A1A', marginLeft: '.3rem' }}
+                          >
+                            {item.planType}
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      <div className='w-full flex mt-1 mb-3'>
                         <Image
                           src='/assets/images/cardSeparador.png'
                           alt='Separador'
-                          width={270}
-                          height={2}
+                          width={550}
+                          height={1}
+                          style={{ width: '100%', height: 'auto' }}
                         />
                       </div>
-                      <Box display={'flex'} mt={0.5}>
-                        <Typography
-                          fontSize={30}
-                          fontWeight={700}
-                          sx={{ color: '#1A1A1A' }}
-                        >
-                          {`$${item.price}`}
-                        </Typography>
-                        <Typography
-                          fontSize={22}
-                          fontWeight={700}
-                          sx={{ color: '#1A1A1A', marginLeft: '.3rem' }}
-                        >
-                          {item.planType}
-                        </Typography>
-                      </Box>
-                      <ListItem contents={item.contents} />
-                    </Box>
-                    <Box display={'flex'} justifyContent={'flex-end'}>
-                      <Button
-                        sx={{ fontWeight: 700, fontSize: 12 }}
-                        variant='text'
-                      >
-                        {constant[language].seeMoreText}
-                      </Button>
-                    </Box>
-                    <Box mt={0.5}>
-                      <Button
-                        fullWidth
-                        variant='contained'
+
+                      <Box
                         sx={{
-                          borderRadius: 18,
-                          py: 1.5,
-                          fontWeight: 700,
-                          textTransform: 'none',
-                          fontSize: '1rem',
-                          background: '#2A458A',
-                          boxShadow: '0 10px 20px -5px rgba(37, 99, 235, 0.4)',
-                          transition: 'all 0.2s ease',
-                          '&:hover': {
-                            transform: 'translateY(-2px)',
-                            boxShadow:
-                              '0 15px 25px -5px rgba(37, 99, 235, 0.5)',
-                            background: '#18274F',
-                          },
+                          maxHeight: isMobile ? '240px' : 'none',
+                          overflowY: isMobile ? 'auto' : 'visible',
                         }}
                       >
-                        {constant[language].selectPlanButton}
-                      </Button>
+                        <ListItem contents={item.contents} />
+                      </Box>
                     </Box>
                   </div>
                 </div>
@@ -221,8 +199,7 @@ const App: React.FC = () => {
         })}
       </div>
 
-      {/* Navegación (Dots) */}
-      <div className='flex gap-3 mt-10 mb-2'>
+      <div className='flex gap-3 mt-10 md:mb-15'>
         {items.map((_, index) => (
           <button
             key={index}
@@ -232,7 +209,7 @@ const App: React.FC = () => {
             <div
               className={`transition-all duration-300 rounded-full ${
                 activeIndex === index
-                  ? 'w-4 h-4 bg-orange-400 shadow-[0_0_15px_rgba(37,99,237,0.5)]'
+                  ? 'w-4 h-4 bg-orange-400 shadow-[0_0_15px_rgba(251,146,60,0.5)]'
                   : 'w-2 h-2 bg-slate-300 group-hover:bg-orange-400'
               }`}
             />

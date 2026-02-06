@@ -56,7 +56,7 @@ const Details = () => {
             width: { xs: '100%', sm: 'auto' }, // En móvil ocupa todo el ancho
           }}
         >
-          <Button
+          {/**<Button
             sx={{
               borderRadius: 18,
               // 3. RESPONSIVE: 100% ancho en móvil, 159px fijo en escritorio
@@ -69,7 +69,7 @@ const Details = () => {
             variant='contained'
           >
             {constant[language].firstButton}
-          </Button>
+          </Button> */}
 
           <Button
             sx={{
@@ -80,7 +80,7 @@ const Details = () => {
               fontWeight: 600,
               fontSize: 16,
             }}
-            variant='outlined'
+            variant='contained'
           >
             {constant[language].secondButton}
           </Button>

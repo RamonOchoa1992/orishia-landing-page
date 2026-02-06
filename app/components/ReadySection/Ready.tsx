@@ -11,7 +11,7 @@ const Ready = () => {
   return (
     <FadeInSection>
       <Box
-        mt={{ xs: 8, md: language === 'es' ? 12 : 16 }}
+        mt={{ xs: 8, md: language === 'es' ? 13 : 16.5 }}
         // 2. Padding lateral para que nada toque los bordes en móvil
         px={{ xs: 2, md: 0 }}
       >
@@ -76,7 +76,7 @@ const Ready = () => {
         </Box>
 
         {/* WRAPPER PARA EL DIVIDER INFERIOR */}
-        <Box display='flex' justifyContent='center' width='100%'>
+        <Box display='flex' justifyContent='center' width='100%' mt={7}>
           <Box width={{ xs: '90%', md: 'auto' }}>
             <Divider width={1000} height={2} />
           </Box>

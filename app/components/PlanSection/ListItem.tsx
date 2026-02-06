@@ -1,14 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-// Definimos la estructura de un solo elemento
 interface ItemData {
   name: string;
   isActive: boolean;
   description: string;
 }
 
-// Definimos que el componente recibe un objeto con una propiedad 'contents' que es un array
 interface ListItemProps {
   contents: ItemData[];
 }
@@ -17,25 +15,28 @@ const ListItem = ({ contents }: ListItemProps) => {
   if (!contents || contents.length === 0) return null;
 
   return (
-    <>
+    <Box
+      display={'grid'}
+      // 1 columna en móvil (xs), 2 columnas en escritorio (md)
+      gridTemplateColumns={{ xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr' }}
+      columnGap={3}
+      rowGap={1}
+    >
       {contents.map((el) => (
-        <Box
-          key={el.name}
-          display='flex'
-          alignItems='center' // Alinea el icono con el texto verticalmente
-          mt={1}
-        >
-          <Image
-            src={
-              el.isActive
-                ? '/assets/images/active-plan-list-icon.png'
-                : '/assets/images/plan-list-icon.png'
-            }
-            alt='Check icon'
-            width={16}
-            height={18}
-            style={{ objectFit: 'contain' }}
-          />
+        <Box key={el.name} display='flex' alignItems='flex-start' mt={1.5}>
+          <Box sx={{ flexShrink: 0, mt: 0.5 }}>
+            <Image
+              src={
+                el.isActive
+                  ? '/assets/images/active-plan-list-icon.png'
+                  : '/assets/images/plan-list-icon.png'
+              }
+              alt='Check icon'
+              width={16}
+              height={18}
+              style={{ objectFit: 'contain' }}
+            />
+          </Box>
           <Typography
             fontSize={14}
             fontWeight={el.isActive ? 700 : 400}
@@ -52,7 +53,7 @@ const ListItem = ({ contents }: ListItemProps) => {
           </Typography>
         </Box>
       ))}
-    </>
+    </Box>
   );
 };
 

@@ -2,18 +2,18 @@
 import { Box, Typography } from '@mui/material';
 import Divider from '../common/Divider';
 import Carrusel from '../../components/PlanSection/Carrusel';
-import { useState } from 'react';
+//import { useState } from 'react';
 import FadeInSection from '@/app/components/common/FadeInSection';
 import { constant } from '@/app/utils/plan-constant';
 import useLanguageStore from '@/app/store/useLanguageStore';
 
 const Plan = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
+  //const [isAnnual, setIsAnnual] = useState(false);
   const { language } = useLanguageStore();
 
   return (
-    <FadeInSection>
-      <Box px={{ xs: 2, md: 0 }}>
+    <FadeInSection id='plans'>
+      <Box mt={15} px={{ xs: 2, md: 0 }}>
         {' '}
         {/* Padding lateral de seguridad en móvil */}
         <Box
@@ -69,7 +69,7 @@ const Plan = () => {
           </Typography>
         </Box>
         {/* Switch Toggle */}
-        <div className='flex items-center justify-center p-4 pb-0 mt-6'>
+        {/* <div className='flex items-center justify-center p-4 pb-0 mt-6'>
           <div className='relative flex flex-col items-center max-w-full'>
             <div
               onClick={() => setIsAnnual(!isAnnual)}
@@ -121,7 +121,7 @@ const Plan = () => {
               {constant[language].selectPlanText}
             </Typography>
           </div>
-        </div>
+        </div> */}
         <Carrusel />
       </Box>
     </FadeInSection>
