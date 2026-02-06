@@ -36,6 +36,22 @@ const Contact = () => {
     },
   ];
 
+  const socialData = [
+    { text: 'whatsapp', href: '#' },
+    {
+      text: 'facebook',
+      href: 'https://www.facebook.com/profile.php?id=61584844445872',
+    },
+    {
+      text: 'linkedin',
+      href: 'https://www.linkedin.com/company/110511989/admin/dashboard',
+    },
+    {
+      text: 'instagram',
+      href: 'https://www.instagram.com/orishia.ia/',
+    },
+  ];
+
   return (
     <FadeInSection id='contacts'>
       <Box
@@ -52,7 +68,11 @@ const Contact = () => {
           width={{ xs: '100%', lg: '30%' }}
           textAlign={{ xs: 'center', lg: 'left' }}
         >
-          <Box mb={2} display={'flex'} justifyContent={{ xs: 'center', lg: 'flex-start' }}>
+          <Box
+            mb={2}
+            display={'flex'}
+            justifyContent={{ xs: 'center', lg: 'flex-start' }}
+          >
             <Image
               src='/assets/images/logo.png'
               alt='Logo'
@@ -61,7 +81,7 @@ const Contact = () => {
               priority
             />
           </Box>
-          <Typography  fontSize={16} fontWeight={400}>
+          <Typography fontSize={16} fontWeight={400}>
             {constant[language].logoText}
           </Typography>
 
@@ -72,20 +92,22 @@ const Contact = () => {
             alignItems={'center'}
             mt={3}
           >
-            {['whatsapp', 'facebook', 'twitter', 'linkedin', 'instagram'].map(
-              (social) => (
-                <Link key={social} href={'#'}>
-                  <Tooltip title={social.charAt(0).toUpperCase() + social.slice(1)}>
-                    <Image
-                      width={21}
-                      height={24}
-                      src={`/assets/images/${social}-icon.png`}
-                      alt={social}
-                    />
-                  </Tooltip>
-                </Link>
-              ),
-            )}
+            {socialData.map((social) => (
+              <Link key={social.text} href={social.href} target='_BLANK'>
+                <Tooltip
+                  title={
+                    social.text.charAt(0).toUpperCase() + social.text.slice(1)
+                  }
+                >
+                  <Image
+                    width={21}
+                    height={24}
+                    src={`/assets/images/${social.text}-icon.png`}
+                    alt={social.text}
+                  />
+                </Tooltip>
+              </Link>
+            ))}
           </Box>
         </Box>
 

@@ -12,14 +12,14 @@ export const constant = {
         text: 'Sobre nosotros',
         href: '#about',
       },
-      {
+      /*{
         text: 'Política de Privacidad',
         href: '#privacy',
       },
       {
         text: 'Términos y Condiciones',
         href: '#terms',
-      },
+      },*/
     ],
     thirdColumnTitle: 'Contactos',
     thirdColumnButton: 'Subscribirse',
@@ -44,14 +44,14 @@ export const constant = {
         text: 'Sobre nosotros',
         href: '#about',
       },
-      {
+      /*{
         text: 'Política de Privacidad',
         href: '#privacy',
       },
       {
         text: 'Términos y Condiciones',
         href: '#terms',
-      },
+      },*/
     ],
     thirdColumnTitle: 'Contacts',
     thirdColumnButton: 'Subscribe',
