@@ -1,17 +1,22 @@
 'use client';
+import { useState } from 'react'; // Importamos useState
 import useLanguageStore from '@/app/store/useLanguageStore';
 import FadeInSection from '@/app/components/common/FadeInSection';
 import { Box, Button, Typography } from '@mui/material';
 import { constant } from '@/app/utils/details-constant';
+import ContactModal from '../common/ContactModal';
 
 const Details = () => {
   const { language } = useLanguageStore();
+  const [openModal, setOpenModal] = useState(false); // Estado para el modal
+
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
 
   return (
     <FadeInSection>
       <Box
-        width={'100%'} // Asegura que use el ancho disponible
-        // 1. RESPONSIVE: Padding pequeño en móvil, grande en escritorio
+        width={'100%'}
         sx={{
           padding: { xs: '1.5rem', md: '1.5rem 7rem 0 7rem' },
         }}
@@ -24,18 +29,15 @@ const Details = () => {
             sx={{ fontSize: { xs: '40px', sm: '40px', md: '80px' } }}
             fontWeight={100}
             textAlign={'center'}
-            // Evita que el texto se salga en pantallas muy pequeñas
             style={{ wordBreak: 'break-word' }}
           >
             {constant[language].title}{' '}
             <span style={{ fontWeight: 800 }}>
-              {' '}
               {constant[language].titleBold}
             </span>
           </Typography>
         </Box>
 
-        {/* 2. RESPONSIVE: Ancho del subtítulo */}
         <Box sx={{ width: { xs: '90%', md: '45vw' } }}>
           <Typography
             sx={{ fontSize: { xs: '20px', sm: '20px', md: '30px' } }}
@@ -49,32 +51,16 @@ const Details = () => {
         <Box
           mt={6}
           display={'flex'}
-          // Usamos gap para separar botones en lugar de márgenes manuales
           gap={2}
           sx={{
             flexDirection: { xs: 'column', sm: 'row' },
-            width: { xs: '100%', sm: 'auto' }, // En móvil ocupa todo el ancho
+            width: { xs: '100%', sm: 'auto' },
           }}
         >
-          {/**<Button
-            sx={{
-              borderRadius: 18,
-              // 3. RESPONSIVE: 100% ancho en móvil, 159px fijo en escritorio
-              width: { xs: '100%', sm: 159 },
-              height: 60,
-              fontWeight: 600,
-              fontSize: 16,
-              // Eliminé los margenes manuales (mr, mb) porque usamos 'gap' arriba
-            }}
-            variant='contained'
-          >
-            {constant[language].firstButton}
-          </Button> */}
-
           <Button
+            onClick={handleOpen} // Evento para abrir el modal
             sx={{
               borderRadius: 18,
-              // 3. RESPONSIVE: Igual aquí, adaptable
               width: { xs: '100%', sm: 159 },
               height: 60,
               fontWeight: 600,
@@ -86,6 +72,13 @@ const Details = () => {
           </Button>
         </Box>
       </Box>
+
+      {/* Renderizado del Modal */}
+      <ContactModal
+        open={openModal}
+        onClose={handleClose}
+        language={language}
+      />
     </FadeInSection>
   );
 };
