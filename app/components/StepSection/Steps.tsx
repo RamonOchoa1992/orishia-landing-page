@@ -90,7 +90,7 @@ const Steps = () => {
           justifyContent='space-around'
           alignItems='center'
           mt={8}
-          mb={6}
+          mb={8}
           px={{ xs: 0, md: 12 }} // Quitamos el padding enorme en móvil
           gap={{ xs: 2, md: 0 }} // Espacio entre elementos en móvil
         >
@@ -150,11 +150,7 @@ const Steps = () => {
             display={'flex'}
             justifyContent={'center'}
           >
-            <Typography
-              pt={{ xs: 0, md: 4 }}
-              fontSize={{ xs: 32, md: 48 }}
-              fontWeight={600}
-            >
+            <Typography fontSize={{ xs: 32, md: 48 }} fontWeight={600}>
               {constant[language].firstStep}
             </Typography>
           </Box>
@@ -211,11 +207,7 @@ const Steps = () => {
             display={'flex'}
             justifyContent={'center'}
           >
-            <Typography
-              pt={{ xs: 0, md: 4 }}
-              fontSize={{ xs: 32, md: 48 }}
-              fontWeight={600}
-            >
+            <Typography fontSize={{ xs: 32, md: 48 }} fontWeight={600}>
               {constant[language].secondStep}
             </Typography>
           </Box>
@@ -366,11 +358,7 @@ const Steps = () => {
             display={'flex'}
             justifyContent={'center'}
           >
-            <Typography
-              pt={{ xs: 0, md: 6 }}
-              fontSize={{ xs: 32, md: 48 }}
-              fontWeight={600}
-            >
+            <Typography fontSize={{ xs: 32, md: 48 }} fontWeight={600}>
               {constant[language].thirdStep}
             </Typography>
           </Box>

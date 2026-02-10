@@ -37,7 +37,7 @@ const Contact = () => {
   ];
 
   const socialData = [
-    { text: 'whatsapp', href: '#' },
+    { text: 'whatsapp', href: 'https://wa.link/ljoeil' },
     {
       text: 'facebook',
       href: 'https://www.facebook.com/profile.php?id=61584844445872',

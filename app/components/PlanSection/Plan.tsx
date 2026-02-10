@@ -13,7 +13,7 @@ const Plan = () => {
 
   return (
     <FadeInSection id='plans'>
-      <Box mt={15} px={{ xs: 2, md: 0 }}>
+      <Box mt={10} px={{ xs: 2, md: 0 }}>
         {' '}
         {/* Padding lateral de seguridad en móvil */}
         <Box

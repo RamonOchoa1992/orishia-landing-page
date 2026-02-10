@@ -11,19 +11,20 @@ export const constant = {
     popularPlanText: 'Plan más popular',
     seeMoreText: 'Ver más...',
     selectPlanButton: 'Seleccionar plan',
+    customQuotesText: 'Cotizaciones a medida:',
     items: [
       {
         id: 1,
         title: 'Básico',
         subtitle: 'Para empresas de rápido crecimiento',
-        price: 150,
+        price: 250,
         planType: '/por mes',
         popular: false,
         contents: [
           {
-            name: 'IA básica Faqs',
-            isActive: true,
-            description: '(hasta 6000 caracteres y 2 flujos conversacionales).',
+            name: 'IA básica FaqsCanales: WebChat + 1 Canal Meta',
+            isActive: false,
+            description: '(excluyendo whatsapp)',
           },
           {
             name: 'Webchat',
@@ -31,57 +32,42 @@ export const constant = {
             description: '',
           },
           {
-            name: '1 Canal social',
-            isActive: false,
-            description: '(IG o FB)',
-          },
-          {
-            name: '2 Licencias CX-Core',
-            isActive: false,
-            description: '(Agentes)',
-          },
-          {
-            name: 'Reportería',
+            name: 'Conversaciones IA FAQS incluidas: 500',
             isActive: false,
             description: '',
           },
           {
-            name: '500 Interacciones',
+            name: 'Mantenimiento IA FAQS',
             isActive: false,
             description: '',
           },
           {
-            name: 'Capacitacion Inicial',
+            name: 'Licencias: 2',
             isActive: false,
-            description: '(1 hora en implementación)',
+            description: '',
           },
         ],
       },
       {
         id: 2,
         title: 'Estándar',
-        subtitle: 'Para freelancers y startups',
+        subtitle: 'Para empresas de rápido crecimiento',
         price: 600,
         planType: '/por mes',
         popular: true,
         contents: [
           {
-            name: 'Canales: WebChat + 3 Canales Meta',
-            isActive: true,
+            name: 'Canales: WebChat + 3 Canal Meta',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Capacitación y Mantenimiento IA Inicial',
+            isActive: false,
             description: '',
           },
           {
             name: 'Herramienta de Correo',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Soporte Operativo',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Licencias: 4',
             isActive: false,
             description: '',
           },
@@ -91,7 +77,17 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Flujos Conversacionales: 3',
+            name: 'Soporte Operativo',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Flujos conversacionales: 3',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Licencias: 4',
             isActive: false,
             description: '',
           },
@@ -101,7 +97,7 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Capacitación y Mantenimiento IA Inicial',
+            name: 'Conversaciones IA Inicial: 1000',
             isActive: false,
             description: '',
           },
@@ -121,7 +117,17 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Herramienta de Correo + Catalogo y Novedades',
+            name: 'Extensión IA Intermedia: 50000',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Herramienta de Correo + Catálogo y Novedades',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Flujos Conversacionales: 6',
             isActive: false,
             description: '',
           },
@@ -131,22 +137,22 @@ export const constant = {
             description: '',
           },
           {
+            name: 'Automatizaciones: 10',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Conversaciones IA Intermedia: 2000',
             isActive: false,
             description: '',
           },
           {
+            name: 'Capacitación y Mantenimiento IA Intermedia',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Licencias: 8',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Extensión IA Intermedia: 50000',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Flujos Conversacionales: 6',
             isActive: false,
             description: '',
           },
@@ -166,12 +172,27 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Herramienta de Correo + Catalogo y Novedades',
+            name: 'Extensión IA Avanzada: 80000',
             isActive: false,
             description: '',
           },
           {
-            name: 'Integración Tienda Nube para Postventa',
+            name: 'Herramienta de Correo + Catálogo y Novedades',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Flujos Conversacionales: 10',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Integración Tienda Nube Postventa y Catálogo',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Automatizaciones: 20',
             isActive: false,
             description: '',
           },
@@ -181,17 +202,17 @@ export const constant = {
             description: '',
           },
           {
+            name: 'Campañas de Whatsapp: 300 mensajes',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Licencias: 15',
             isActive: false,
             description: '',
           },
           {
-            name: 'Extensión IA Avanzada: 80000',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Flujos Conversacionales: 10',
+            name: 'Capacitación y Mantenimiento IA Avanzada',
             isActive: false,
             description: '',
           },
@@ -211,12 +232,17 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Herramienta de Correo + Catalogo y Novedades',
+            name: 'Extensión IA a Medida: 100 000',
             isActive: false,
             description: '',
           },
           {
-            name: 'Integración Tienda Nube para Postventa',
+            name: 'Integración Tienda Nube Postventa y Catálogo',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Flujos Conversacionales: 15',
             isActive: false,
             description: '',
           },
@@ -226,17 +252,27 @@ export const constant = {
             description: '',
           },
           {
+            name: 'Automatizaciones: 25',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Herramienta de Correo + Catálogo y Novedades',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Campañas de Whatsapp: 300 mensajes',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Licencias: 20',
             isActive: false,
             description: '',
           },
           {
-            name: 'Extensión IA a Medida: 100 000',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Flujos Conversacionales: 15',
+            name: 'Capacitación y Mantenimiento IA a medida',
             isActive: false,
             description: '',
           },
@@ -256,19 +292,20 @@ export const constant = {
     popularPlanText: 'Most popular plan',
     seeMoreText: 'See more...',
     selectPlanButton: 'Select plan',
+    customQuotesText: 'Custom quotes:',
     items: [
       {
         id: 1,
         title: 'Basic',
         subtitle: 'For fast-growing businesses',
-        price: 150,
+        price: 250,
         planType: '/per month',
         popular: false,
         contents: [
           {
-            name: 'Basic AI Faqs',
-            isActive: true,
-            description: '(to 6000 characters y 2 conversational flows).',
+            name: 'Basic FAQs Channels AI: WebChat + 1 Meta Channel',
+            isActive: false,
+            description: '(excluding WhatsApp)',
           },
           {
             name: 'Webchat',
@@ -276,57 +313,42 @@ export const constant = {
             description: '',
           },
           {
-            name: '1 Social Channel',
-            isActive: false,
-            description: '(IG or FB)',
-          },
-          {
-            name: '2 CX-Core Licenses',
-            isActive: false,
-            description: '(Agents)',
-          },
-          {
-            name: 'Reporting',
+            name: 'Included FAQs AI Conversations: 500',
             isActive: false,
             description: '',
           },
           {
-            name: '500 Interactions',
+            name: 'FAQs AI Maintenance',
             isActive: false,
             description: '',
           },
           {
-            name: 'Initial Training',
+            name: 'Licenses: 2',
             isActive: false,
-            description: '(1 hour of implementation)',
+            description: '',
           },
         ],
       },
       {
         id: 2,
         title: 'Standard',
-        subtitle: 'For freelancers and startups',
+        subtitle: 'For fast-growing businesses',
         price: 600,
         planType: '/per month',
         popular: true,
         contents: [
           {
             name: 'Channels: WebChat + 3 Meta Channels',
-            isActive: true,
-            description: '',
-          },
-          {
-            name: 'Mail Tool',
             isActive: false,
             description: '',
           },
           {
-            name: 'Operational Support',
+            name: 'Initial AI Training and Maintenance',
             isActive: false,
             description: '',
           },
           {
-            name: 'Licenses: 4',
+            name: 'Tool Mail',
             isActive: false,
             description: '',
           },
@@ -336,7 +358,17 @@ export const constant = {
             description: '',
           },
           {
+            name: 'Operational Support',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Conversational Flows: 3',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Licenses: 4',
             isActive: false,
             description: '',
           },
@@ -346,7 +378,7 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Initial AI Training & Maintenance',
+            name: 'Initial AI Conversations: 1000',
             isActive: false,
             description: '',
           },
@@ -366,12 +398,27 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Mail Tool + Catalog & News',
+            name: 'Intermediate AI Extension: 50000',
             isActive: false,
             description: '',
           },
           {
-            name: 'Nube Store Integration for After-Sales',
+            name: 'Tool Mail + Catalog & News',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Conversational Flows: 6',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Tienda Nube Integration for After-Sales',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Automations: 10',
             isActive: false,
             description: '',
           },
@@ -381,17 +428,12 @@ export const constant = {
             description: '',
           },
           {
+            name: 'Intermediate AI Training and Maintenance',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Licenses: 8',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Intermediate AI Extension: 50000',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Conversational Flows: 6',
             isActive: false,
             description: '',
           },
@@ -411,12 +453,27 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Mail Tool + Catalog & News',
+            name: 'Advanced AI Extension: 80000',
             isActive: false,
             description: '',
           },
           {
-            name: 'Nube Store Integration for After-Sales',
+            name: 'Mail Tool + Catalog and News',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Conversational Flows: 10',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Tienda Nube Integration: After-Sales and Catalog',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Automations: 20',
             isActive: false,
             description: '',
           },
@@ -426,17 +483,17 @@ export const constant = {
             description: '',
           },
           {
+            name: 'WhatsApp Campaigns: 300 messages',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Licenses: 15',
             isActive: false,
             description: '',
           },
           {
-            name: 'Advanced AI Extension: 80000',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Conversational Flows: 10',
+            name: 'Advanced AI Training and Maintenance',
             isActive: false,
             description: '',
           },
@@ -456,12 +513,17 @@ export const constant = {
             description: '',
           },
           {
-            name: 'Mail Tool + Catalog & News',
+            name: 'Custom AI Extension: 100 000',
             isActive: false,
             description: '',
           },
           {
-            name: 'Nube Store Integration for After-Sales',
+            name: 'Tienda Nube Integration: After-Sales and Catalog',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Conversational Flows: 15',
             isActive: false,
             description: '',
           },
@@ -471,17 +533,27 @@ export const constant = {
             description: '',
           },
           {
+            name: 'Automations: 25',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Email Tool + Catalog and News',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'WhatsApp Campaigns: 300 messages',
+            isActive: false,
+            description: '',
+          },
+          {
             name: 'Licenses: 20',
             isActive: false,
             description: '',
           },
           {
-            name: 'Custom AI Extension: 100 000',
-            isActive: false,
-            description: '',
-          },
-          {
-            name: 'Conversational Flows: 15',
+            name: 'Custom AI Training and Maintenance',
             isActive: false,
             description: '',
           },

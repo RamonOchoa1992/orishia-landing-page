@@ -29,7 +29,7 @@ export const constant = {
     modalTitle: 'Información del contacto',
     modalDescription:
       'Solicita una demo personalizada o contáctanos para más información sobre como OrishIA puede potencir tu empresa',
-    plans:['Básico', 'Estándar', 'Corporativo', 'Avanzado', 'Premium']
+    plans: ['Básico', 'Estándar', 'Avanzado', 'Premium', 'Corporativo'],
   },
   en: {
     firstColumnTitle: 'COMPANY',
@@ -59,7 +59,8 @@ export const constant = {
     logoText:
       'The omnichannel platform that connects, centralizes, and enhances every interaction with our multi-agent AI.',
     modalTitle: 'Contact Information',
-    modalDescription: 'Request a personalized demo or contact us for more information on how OrishIA can empower your business',
-    plans:['Basic', 'Standard', 'Corporate', 'Advanced', 'Premium']
+    modalDescription:
+      'Request a personalized demo or contact us for more information on how OrishIA can empower your business',
+    plans: ['Basic', 'Standard', 'Advanced', 'Premium', 'Corporate'],
   },
 };

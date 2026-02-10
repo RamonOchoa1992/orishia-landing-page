@@ -1,6 +1,6 @@
 export const constant = {
   es: {
-    title: '¿Qué es OrishIA',
+    title: '¿Qué es OrishIA?',
     subtitle:
       'La plataforma omnicanal que conecta, centraliza y potencia cada interacción con nuestra IA multiagente.',
     firstCardTitle: 'Plataforma Omnicanal',
