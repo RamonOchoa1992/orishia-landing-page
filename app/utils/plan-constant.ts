@@ -22,17 +22,12 @@ export const constant = {
         popular: false,
         contents: [
           {
-            name: 'IA básica Faqs',
-            isActive: false,
-            description: '',
-          },
-          {
             name: 'Canales: WebChat + 1 Canal Meta',
             isActive: false,
             description: '(excluyendo whatsapp)',
           },
           {
-            name: 'Webchat',
+            name: 'Extensión IA FAQS: 6000',
             isActive: false,
             description: '',
           },
@@ -308,27 +303,22 @@ export const constant = {
         popular: false,
         contents: [
           {
-            name: 'Basic FAQs AI',
-            isActive: false,
-            description: '',
-          },
-          {
             name: 'Channels: WebChat + 1 Meta Channels',
             isActive: false,
             description: '(excluding WhatsApp)',
           },
           {
-            name: 'Webchat',
+            name: 'FAQS AI Extension: 6000',
             isActive: false,
             description: '',
           },
           {
-            name: 'Included FAQs AI Conversations: 500',
+            name: 'Included FAQS AI Conversations: 500',
             isActive: false,
             description: '',
           },
           {
-            name: 'FAQs AI Maintenance',
+            name: 'FAQS AI Maintenance',
             isActive: false,
             description: '',
           },
