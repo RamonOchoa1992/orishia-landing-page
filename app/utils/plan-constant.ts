@@ -22,7 +22,12 @@ export const constant = {
         popular: false,
         contents: [
           {
-            name: 'IA básica FaqsCanales: WebChat + 1 Canal Meta',
+            name: 'IA básica Faqs',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Canales: WebChat + 1 Canal Meta',
             isActive: false,
             description: '(excluyendo whatsapp)',
           },
@@ -303,7 +308,12 @@ export const constant = {
         popular: false,
         contents: [
           {
-            name: 'Basic FAQs Channels AI: WebChat + 1 Meta Channel',
+            name: 'Basic FAQs AI',
+            isActive: false,
+            description: '',
+          },
+          {
+            name: 'Channels: WebChat + 1 Meta Channels',
             isActive: false,
             description: '(excluding WhatsApp)',
           },
