@@ -28,7 +28,7 @@ export const constant = {
       'La plataforma omnicanal que conecta, centraliza y potencia cada interacción con nuestra IA multiagente.',
     modalTitle: 'Información del contacto',
     modalDescription:
-      'Solicita una demo personalizada o contáctanos para más información sobre como OrishIA puede potencir tu empresa',
+      'Solicita una demo personalizada o contáctanos para más información sobre como OrishIA puede potenciar tu empresa',
     plans: ['Básico', 'Estándar', 'Avanzado', 'Premium', 'Corporativo'],
   },
   en: {

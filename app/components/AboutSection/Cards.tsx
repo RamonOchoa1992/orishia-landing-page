@@ -31,13 +31,12 @@ const InteractiveCards = () => {
       icon: '/assets/images/connet-logo.png',
       modalData: {
         logoSrc: '/assets/images/connet-card.png',
-        description:constant[language].firstModalDescription,
+        description: constant[language].firstModalDescription,
         dividerColor: '#EE6A2D',
-        // BENEFICIOS CON ICONOS PERSONALIZADOS
         benefits: [
           {
             text: constant[language].firstModalBenefitOne,
-            iconSrc: '/assets/images/connet-card-icon1.png', // Reemplaza con tu icono real
+            iconSrc: '/assets/images/connet-card-icon1.png',
           },
           {
             text: constant[language].firstModalBenefitTwo,
@@ -113,18 +112,20 @@ const InteractiveCards = () => {
   return (
     <>
       <div className='py-6 flex items-center justify-center font-sans'>
-        <div className='max-w-6xl w-full mx-auto'>
+        <div className='max-w-6xl w-full mx-auto px-4'>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             {cards.map((card) => (
               <div
                 key={card.id}
                 onClick={() => handleCardClick(card.modalData)}
-                className='group relative p-6 md:p-10 rounded-[2rem] transition-all duration-500 ease-out bg-transparent hover:bg-white hover:shadow-[0_30px_60px_rgba(0,0,0,0.25)] cursor-pointer'
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
+                className={`
+                  group relative p-6 md:p-10 rounded-[2rem] transition-all duration-500 ease-out cursor-pointer
+                  flex flex-col items-center
+                  /* Móvil: Estado Activo Permanente */
+                  bg-white shadow-[0_20px_40px_rgba(0,0,0,0.15)]
+                  /* Escritorio: Comportamiento Hover */
+                  md:bg-transparent md:shadow-none md:hover:bg-white md:hover:shadow-[0_30px_60px_rgba(0,0,0,0.25)]
+                `}
               >
                 {/* Imagen Preview */}
                 <div className='relative w-[140px] h-[170px] md:w-[175px] md:h-[212px]'>
@@ -154,7 +155,16 @@ const InteractiveCards = () => {
                   {card.description}
                 </Typography>
 
-                <div className='mt-8 flex items-center gap-2 text-sm font-bold opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500'>
+                {/* Link / Botón: Visible siempre en móvil, hover en desktop */}
+                <div
+                  className={`
+                  mt-8 flex items-center gap-2 text-sm font-bold transition-all duration-500
+                  /* Móvil: Visible */
+                  opacity-100 translate-y-0
+                  /* Escritorio: Oculto, aparece en hover */
+                  md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0
+                `}
+                >
                   <Typography fontSize={14} fontWeight={600}>
                     {constant[language].cardLink}
                   </Typography>

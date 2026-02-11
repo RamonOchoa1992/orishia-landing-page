@@ -57,10 +57,11 @@ const Plan = () => {
           {/* Subtítulo Responsive */}
           <Typography
             mt={1}
+            px={{ xs: 2, md: 0 }}
             fontWeight={400}
             fontSize={{ xs: 18, md: 26 }}
             width={{ xs: '100%', md: '70%' }}
-            textAlign={'center'}
+            textAlign={{ xs: 'justify', md: 'center' }}
           >
             {constant[language].subtitle}{' '}
             <span style={{ fontWeight: 700 }}>
